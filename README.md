@@ -47,3 +47,22 @@ position parity for every rejected AsciiMath input is not claimed.
 The existing native JSON wire sorts object members, so Python cannot recover
 the Ruby Hash insertion order from that wire. List order and slice metadata
 are retained. This is a known ABI limitation, separate from wrapper inversion.
+
+## Canonical model JSON
+
+`amath.parse_model_json(source, decimal=".")` returns a Python dict containing
+the JSON emitted by the canonical Rust stage and upstream LutaML codecs. Set
+`AMATH_MODEL_CDYLIB` to the absolute path of the separately installed,
+platform-specific `amath` Rust cdylib exporting model ABI version 1. The
+Python wheel includes no native binary. This route does not require loading
+the separate Parsanol C ABI library used by `parse_raw`.
+
+`ModelParseError.error` preserves the native error payload; native offsets
+refer to preprocessed input and use the native farthest-failure reporter.
+`ModelRuntimeUnavailable` reports a missing library, wrong ABI version, or
+invalid response. Inputs are borrowed for the call and every owned native
+JSON result is freed once, including decoding failures.
+
+This is portable model JSON, not generated Python classes. The upstream
+serializer's empty/nil omission policy is retained; lossless or idempotent
+model serialization is not claimed.

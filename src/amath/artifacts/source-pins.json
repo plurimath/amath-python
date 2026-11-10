@@ -11,5 +11,13 @@
     "lib/amath/error_position.rb": "8e66fca542b7a89537042981036ee3b5f4cf31345df99e46cb61cc0f739dbf42"
   },
   "parsanol_python_commit": "b92d4f94c0eacd0fa1ae9424e25c88fef529071c",
-  "boundary": "legacy-raw-tree-with-slice-wires-and-normalized-shape"
+  "boundary": "legacy-raw-tree-with-slice-wires-and-normalized-shape",
+  "optional_model_abi": {
+    "sha256": "9f14e2fe62eb01411dbafb3193c4fc90c339af0599c188fe7f9f801db59e6dfe",
+    "header_sha256": "0b4bd523d395b45c95449fb634d5c6567b0b03c1109461095f120aaceb9c6886",
+    "abi_version": 1,
+    "producer_receipt": "handoffs/codex-rust/amath-abi-check.json",
+    "producer_receipt_sha256": "a44870d35208554ba298253f79cdae0ca977c356a358ccad66cda14d6630f7fa",
+    "source_head": "da41025b558fba1b7bd18e35a6c80aef8bca987d"
+  }
 }

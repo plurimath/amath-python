@@ -1,0 +1,169 @@
+[
+  {
+    "input": "alpha+1",
+    "decimal": ".",
+    "model": {
+      "expression": {
+        "expr": {
+          "amath_chain": [
+            {
+              "amath_step": {
+                "sequence": {
+                  "symbol": {
+                    "spelling": "alpha",
+                    "value": "α",
+                    "kind": "symbol"
+                  }
+                }
+              }
+            },
+            {
+              "amath_step": {
+                "sequence": {
+                  "symbol": {
+                    "spelling": "+",
+                    "value": "+",
+                    "kind": "symbol"
+                  }
+                }
+              }
+            },
+            {
+              "amath_step": {
+                "sequence": {
+                  "number": "1"
+                }
+              }
+            },
+            {
+              "amath_end": {}
+            }
+          ]
+        }
+      },
+      "decimal": "."
+    }
+  },
+  {
+    "input": "sqrt(x)",
+    "decimal": ".",
+    "model": {
+      "expression": {
+        "expr": {
+          "amath_chain": [
+            {
+              "amath_step": {
+                "sequence": {
+                  "unary": {
+                    "intermediate_exp": {
+                      "expr": {
+                        "expr": {
+                          "amath_chain": [
+                            {
+                              "amath_step": {
+                                "sequence": {
+                                  "symbol": {
+                                    "spelling": "x",
+                                    "value": "x",
+                                    "kind": "unlisted"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "lparen": {
+                        "spelling": "(",
+                        "value": "(",
+                        "kind": "open"
+                      },
+                      "rparen": {
+                        "spelling": ")",
+                        "value": ")",
+                        "kind": "close"
+                      }
+                    },
+                    "unary_class": "sqrt"
+                  }
+                }
+              }
+            },
+            {
+              "amath_end": {}
+            }
+          ]
+        }
+      },
+      "decimal": "."
+    }
+  },
+  {
+    "input": "a/b",
+    "decimal": ".",
+    "model": {
+      "expression": {
+        "expr": {
+          "amath_chain": [
+            {
+              "amath_step": {
+                "frac": {
+                  "denominator": {
+                    "sequence": {
+                      "symbol": {
+                        "spelling": "b",
+                        "value": "b",
+                        "kind": "unlisted"
+                      }
+                    }
+                  },
+                  "numerator": {
+                    "symbol": {
+                      "spelling": "a",
+                      "value": "a",
+                      "kind": "unlisted"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "amath_end": {}
+            }
+          ]
+        }
+      },
+      "decimal": "."
+    }
+  },
+  {
+    "input": "1,5",
+    "decimal": ",",
+    "model": {
+      "expression": {
+        "expr": {
+          "amath_chain": [
+            {
+              "amath_step": {
+                "sequence": {
+                  "number": "1,5"
+                }
+              }
+            },
+            {
+              "amath_end": {}
+            }
+          ]
+        }
+      },
+      "decimal": ","
+    }
+  },
+  {
+    "input": "",
+    "decimal": ".",
+    "model": {
+      "decimal": "."
+    }
+  }
+]

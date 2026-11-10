@@ -38,8 +38,8 @@ def _load(path):
         raise ModelRuntimeUnavailable(f"cannot load canonical amath model ABI: {error}") from error
     return library
 
-def parse_model_data(source: str, *, decimal: str = ".") -> dict:
-    """Return canonical stage-produced portable model data through ABI v1.
+def parse_model_json(source: str, *, decimal: str = ".") -> dict:
+    """Return canonical model JSON as a Python dict through ABI v1.
 
     Requires the separate Rust amath stage cdylib, selected by the absolute
     ``AMATH_MODEL_CDYLIB`` path. This is JSON model data, not Python classes.
@@ -55,7 +55,10 @@ def parse_model_data(source: str, *, decimal: str = ".") -> dict:
     if not pointer:
         raise ModelRuntimeUnavailable("canonical amath ABI returned a null result")
     try:
-        result = json.loads(ctypes.string_at(pointer).decode("utf-8"))
+        try:
+            result = json.loads(ctypes.string_at(pointer).decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError) as error:
+            raise ModelRuntimeUnavailable("invalid canonical model ABI JSON encoding") from error
     finally:
         library.amath_free_json_v1(ctypes.c_void_p(pointer))
     if not isinstance(result, dict) or result.get("abi_version") != 1:
