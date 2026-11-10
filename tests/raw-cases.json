@@ -1,0 +1,392 @@
+[
+  {
+    "input": "",
+    "tree": "",
+    "ok": true
+  },
+  {
+    "input": "x",
+    "tree": {
+      "expr": {
+        "sequence": {
+          "symbol": {
+            "offset": 0,
+            "length": 1,
+            "line": 1,
+            "column": 1,
+            "value": "x"
+          }
+        }
+      }
+    },
+    "ok": true
+  },
+  {
+    "input": "x+y+z",
+    "tree": {
+      "expr": {
+        "sequence": {
+          "symbol": {
+            "offset": 0,
+            "length": 1,
+            "line": 1,
+            "column": 1,
+            "value": "x"
+          }
+        },
+        "expr": {
+          "sequence": {
+            "symbol": {
+              "offset": 1,
+              "length": 1,
+              "line": 1,
+              "column": 2,
+              "value": "+"
+            }
+          },
+          "expr": {
+            "sequence": {
+              "symbol": {
+                "offset": 2,
+                "length": 1,
+                "line": 1,
+                "column": 3,
+                "value": "y"
+              }
+            },
+            "expr": {
+              "sequence": {
+                "symbol": {
+                  "offset": 3,
+                  "length": 1,
+                  "line": 1,
+                  "column": 4,
+                  "value": "+"
+                }
+              },
+              "expr": {
+                "sequence": {
+                  "symbol": {
+                    "offset": 4,
+                    "length": 1,
+                    "line": 1,
+                    "column": 5,
+                    "value": "z"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ok": true
+  },
+  {
+    "input": "sqrt(x)",
+    "tree": {
+      "expr": {
+        "sequence": {
+          "unary": {
+            "unary_class": {
+              "offset": 0,
+              "length": 4,
+              "line": 1,
+              "column": 1,
+              "value": "sqrt"
+            },
+            "intermediate_exp": {
+              "lparen": {
+                "offset": 4,
+                "length": 1,
+                "line": 1,
+                "column": 5,
+                "value": "("
+              },
+              "expr": {
+                "expr": {
+                  "sequence": {
+                    "symbol": {
+                      "offset": 5,
+                      "length": 1,
+                      "line": 1,
+                      "column": 6,
+                      "value": "x"
+                    }
+                  }
+                }
+              },
+              "rparen": {
+                "offset": 6,
+                "length": 1,
+                "line": 1,
+                "column": 7,
+                "value": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ok": true
+  },
+  {
+    "input": "((a,b),(c,d))",
+    "tree": {
+      "left_right": {
+        "table": {
+          "table_left": {
+            "table_left": {
+              "offset": 0,
+              "length": 1,
+              "line": 1,
+              "column": 1,
+              "value": "("
+            }
+          },
+          "table_row": {
+            "open_tr": {
+              "offset": 1,
+              "length": 1,
+              "line": 1,
+              "column": 2,
+              "value": "("
+            },
+            "tds_list": {
+              "td": {
+                "expr": {
+                  "sequence": {
+                    "symbol": {
+                      "offset": 2,
+                      "length": 1,
+                      "line": 1,
+                      "column": 3,
+                      "value": "a"
+                    }
+                  },
+                  "expr": {
+                    "comma": {
+                      "offset": 3,
+                      "length": 1,
+                      "line": 1,
+                      "column": 4,
+                      "value": ","
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": {
+                          "offset": 4,
+                          "length": 1,
+                          "line": 1,
+                          "column": 5,
+                          "value": "b"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "expr": {
+            "table_row": {
+              "open_tr": {
+                "offset": 7,
+                "length": 1,
+                "line": 1,
+                "column": 8,
+                "value": "("
+              },
+              "tds_list": {
+                "td": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": {
+                        "offset": 8,
+                        "length": 1,
+                        "line": 1,
+                        "column": 9,
+                        "value": "c"
+                      }
+                    },
+                    "expr": {
+                      "comma": {
+                        "offset": 9,
+                        "length": 1,
+                        "line": 1,
+                        "column": 10,
+                        "value": ","
+                      },
+                      "expr": {
+                        "sequence": {
+                          "symbol": {
+                            "offset": 10,
+                            "length": 1,
+                            "line": 1,
+                            "column": 11,
+                            "value": "d"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "table_right": {
+            "table_right": {
+              "offset": 12,
+              "length": 1,
+              "line": 1,
+              "column": 13,
+              "value": ")"
+            }
+          }
+        }
+      }
+    },
+    "ok": true
+  },
+  {
+    "input": "alpha+beta",
+    "tree": {
+      "expr": {
+        "sequence": {
+          "symbol": {
+            "offset": 0,
+            "length": 5,
+            "line": 1,
+            "column": 1,
+            "value": "alpha"
+          }
+        },
+        "expr": {
+          "sequence": {
+            "symbol": {
+              "offset": 5,
+              "length": 1,
+              "line": 1,
+              "column": 6,
+              "value": "+"
+            }
+          },
+          "expr": {
+            "sequence": {
+              "symbol": {
+                "offset": 6,
+                "length": 4,
+                "line": 1,
+                "column": 7,
+                "value": "beta"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ok": true
+  },
+  {
+    "input": "a/",
+    "ok": false,
+    "char_offset": 1,
+    "byte_offset": 1,
+    "native_error": {
+      "byte_offset": 2,
+      "char_offset": 2,
+      "reason": "native farthest-failure reporter differs from Ruby terminal-leaf reporter"
+    }
+  },
+  {
+    "input": "α a/",
+    "ok": false,
+    "char_offset": 3,
+    "byte_offset": 4,
+    "native_error": {
+      "byte_offset": 5,
+      "char_offset": 4,
+      "reason": "native farthest-failure reporter differs from Ruby terminal-leaf reporter"
+    }
+  },
+  {
+    "input": "1,2+3",
+    "decimal": ",",
+    "tree": {
+      "expr": {
+        "sequence": {
+          "number": {
+            "offset": 0,
+            "length": 3,
+            "line": 1,
+            "column": 1,
+            "value": "1,2"
+          }
+        },
+        "expr": {
+          "sequence": {
+            "symbol": {
+              "offset": 3,
+              "length": 1,
+              "line": 1,
+              "column": 4,
+              "value": "+"
+            }
+          },
+          "expr": {
+            "sequence": {
+              "number": {
+                "offset": 4,
+                "length": 1,
+                "line": 1,
+                "column": 5,
+                "value": "3"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ok": true
+  },
+  {
+    "input": "1٫2+3",
+    "decimal": "٫",
+    "tree": {
+      "expr": {
+        "sequence": {
+          "number": {
+            "offset": 0,
+            "length": 3,
+            "line": 1,
+            "column": 1,
+            "value": "1٫2"
+          }
+        },
+        "expr": {
+          "sequence": {
+            "symbol": {
+              "offset": 4,
+              "length": 1,
+              "line": 1,
+              "column": 4,
+              "value": "+"
+            }
+          },
+          "expr": {
+            "sequence": {
+              "number": {
+                "offset": 5,
+                "length": 1,
+                "line": 1,
+                "column": 5,
+                "value": "3"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ok": true
+  }
+]
