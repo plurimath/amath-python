@@ -1,0 +1,70 @@
+{
+  "reference": "Ruby native raw producer; existing pinned fixture snapshots retained unchanged",
+  "oracle_snapshot_sha256": "850aafd22d384ff5cdabc940d0be026a6ef9b3815af848a3ce1e0aa2d35acbd9",
+  "cases": [
+    {
+      "input": "sqrt(x)",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": {
+                "offset": 0,
+                "length": 4,
+                "line": 1,
+                "column": 1,
+                "value": "sqrt"
+              },
+              "intermediate_exp": {
+                "lparen": {
+                  "offset": 4,
+                  "length": 1,
+                  "line": 1,
+                  "column": 5,
+                  "value": "("
+                },
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": {
+                        "offset": 5,
+                        "length": 1,
+                        "line": 1,
+                        "column": 6,
+                        "value": "x"
+                      }
+                    }
+                  }
+                },
+                "rparen": {
+                  "offset": 6,
+                  "length": 1,
+                  "line": 1,
+                  "column": 7,
+                  "value": ")"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ok": true
+    },
+    {
+      "input": "a/",
+      "ok": false,
+      "error_class": "Amath::ParseError",
+      "char_offset": 1,
+      "byte_offset": 1,
+      "message": "AsciiMath input rejected at character 1 (byte 1): Failed to match: expected one of ['/', ' ', '\t', '"
+    },
+    {
+      "input": "α a/",
+      "ok": false,
+      "error_class": "Amath::ParseError",
+      "char_offset": 3,
+      "byte_offset": 4,
+      "message": "AsciiMath input rejected at character 3 (byte 4): Failed to match: expected one of ['/', ' ', '\t', '"
+    }
+  ]
+}
