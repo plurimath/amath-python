@@ -4,8 +4,12 @@
   "files": {
     "artifacts/asciimath.json": "f7e812476e125729e4f69c00d08083d69e83b4666d3c33b911e3ab88d30988da",
     "artifacts/asciimath.bindings.python.json": "2bf9e6723f1c1d66aa8853fd8095e1c908f60f17b034347fe12d858e3b0bf129",
-    "grammars/asciimath.parg": "8fc391577745dec67f31913a54de1060c6856f5514ed3c11300724a462ae8cfb"
+    "grammars/asciimath.parg": "8fc391577745dec67f31913a54de1060c6856f5514ed3c11300724a462ae8cfb",
+    "grammars/asciimath.wrappers.json": "ef2919bef0d3581eb5bfe93dfc268cf85961fb69794b6730f792b14c0a0b6618",
+    "lib/amath/raw_tree.rb": "9704233cb6385a33006ad543b80bfd02c3f4d55bb20396fc9a67d45996e8c245",
+    "lib/amath/renester.rb": "d5b17ebeafb79b1ccfe9477d519c3e91d0bfc9b5e8c76f12a6828f87ee68492d",
+    "lib/amath/error_position.rb": "8e66fca542b7a89537042981036ee3b5f4cf31345df99e46cb61cc0f739dbf42"
   },
   "parsanol_python_commit": "b92d4f94c0eacd0fa1ae9424e25c88fef529071c",
-  "boundary": "normalized-raw-tree-and-python-bindings"
+  "boundary": "legacy-raw-tree-with-slice-wires-and-normalized-shape"
 }

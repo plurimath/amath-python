@@ -1,0 +1,20 @@
+{
+  "format": "amath-wrappers/1",
+  "wrappers": {
+    "empty": "empty",
+    "empty_list": "empty_list",
+    "list": "list",
+    "literal": "text",
+    "literal_2": "text",
+    "spelling": "text"
+  },
+  "rules": {
+    "N1 text alternative": 22,
+    "N2 empty alternative": 27,
+    "N3 list in node slot": 6,
+    "N5 text sibling": 12,
+    "N6 forced rule": 23,
+    "N8 empty run": 8,
+    "N9 catalog spelling": 3466
+  }
+}
