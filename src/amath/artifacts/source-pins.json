@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/plurimath/amath",
+  "commit": "fbc20c95bdd04ef7952dc07ccf6d197b8f16bc84",
+  "files": {
+    "artifacts/asciimath.json": "f7e812476e125729e4f69c00d08083d69e83b4666d3c33b911e3ab88d30988da",
+    "artifacts/asciimath.bindings.python.json": "2bf9e6723f1c1d66aa8853fd8095e1c908f60f17b034347fe12d858e3b0bf129",
+    "grammars/asciimath.parg": "8fc391577745dec67f31913a54de1060c6856f5514ed3c11300724a462ae8cfb"
+  },
+  "parsanol_python_commit": "b92d4f94c0eacd0fa1ae9424e25c88fef529071c",
+  "boundary": "normalized-raw-tree-and-python-bindings"
+}
