@@ -1,7 +1,7 @@
 {
   "stage": "amath",
   "repository": "plurimath/amath-rs",
-  "revision": "1f44e53e206b991feb23ece5755ce759a25dc668",
+  "revision": "63b68d1566b03e9d37af4edac9b4b67ac21241cf",
   "rust_toolchain": "1.95.0",
   "python_runtime": {
     "repository": "parsanol/parsanol-python",

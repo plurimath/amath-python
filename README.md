@@ -39,7 +39,8 @@ missing native libraries raise `ParsanolError`.
 This is the raw syntax boundary. Normalization wrappers remain in
 shape/bindings and are inverted by `.tree`. There is no `parse` alias claiming
 Ruby's typed model contract, model construction, serializer, or writer parity.
-AsciiMath uses the legacy dialect only; PMA semantic validation is not exposed.
+Raw parsing uses the legacy dialect only. The typed model also offers the pma dialect
+(`parse_model_json(source, dialect="pma")`); see Entrypoints and dialects.
 `artifact_info()` records exact upstream source and dependency pins.
 
 The bundled parse artifact and declared Python binding artifact are checksum
@@ -124,5 +125,10 @@ with the native category and depth fields. Codec `model_error` refusals remain
   producer's legacy policy). These match Ruby `Amath.parse` / `Amath::Parser.raw`.
 - Typed model: `parse_model_json(source, decimal=".")` returns the portable model JSON as a
   dict. This matches Ruby `Amath.parse_model(input, dialect: :legacy)`.
-- Dialect availability: only dialect L (`:legacy`) is implemented. The pma dialect
-  (`dialect: :pma` in Ruby amath) is not available in this package yet.
+- Dialect P: `parse_model_json(source, dialect="pma")` returns the portable `PmaDocument`
+  JSON. This matches Ruby `Amath.parse_model(input, dialect: :pma)`. It is only selected
+  explicitly, never falls back to dialect L, and has no decimal option ("." only). A
+  refusal raises `ModelParseError` with `refusal_category` (one of 14 pma categories) and
+  `byte_offset`/`char_offset` in the caller input.
+- Dialect availability: dialect L (`"legacy"`, the default) and dialect P (`"pma"`). Raw
+  parsing (`parse_raw`, `parse_legacy_raw`) is dialect L only.
