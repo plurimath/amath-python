@@ -1,0 +1,1522 @@
+{
+  "engine": "ruby",
+  "amath_revision": "71df055b5f6056d46954ee801b324c1251bd18e2",
+  "accepted": [
+    {
+      "id": "ctor.ustd",
+      "input": "ustd(1.230, 0.004)",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.004",
+          "uncertainty_class": "ustd",
+          "value": "1.230"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "uncertainty_class": "ustd",
+          "value": "1.230",
+          "magnitude": "0.004"
+        }
+      }
+    },
+    {
+      "id": "ctor.ustd.negative",
+      "input": "ustd(-1.230, 0.004)",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.004",
+          "uncertainty_class": "ustd",
+          "value": "-1.230"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "uncertainty_class": "ustd",
+          "value": "-1.230",
+          "magnitude": "0.004"
+        }
+      }
+    },
+    {
+      "id": "ctor.uexp",
+      "input": "uexp(10.0, 0.3, 2)",
+      "term": {
+        "uncertainty": {
+          "coverage_factor": "2",
+          "magnitude": "0.3",
+          "uncertainty_class": "uexp",
+          "value": "10.0"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "uncertainty_class": "uexp",
+          "value": "10.0",
+          "magnitude": "0.3",
+          "coverage_factor": "2"
+        }
+      }
+    },
+    {
+      "id": "ctor.uexp.probability",
+      "input": "uexp(10.0, 0.3, 2, 0.95)",
+      "term": {
+        "uncertainty": {
+          "coverage_factor": "2",
+          "coverage_probability": "0.95",
+          "magnitude": "0.3",
+          "uncertainty_class": "uexp",
+          "value": "10.0"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "uncertainty_class": "uexp",
+          "value": "10.0",
+          "magnitude": "0.3",
+          "coverage_factor": "2",
+          "coverage_probability": "0.95"
+        }
+      }
+    },
+    {
+      "id": "ctor.uexp.zero_k",
+      "input": "uexp(1.0, 0.3, 0, 0.95)",
+      "term": {
+        "uncertainty": {
+          "coverage_factor": "0",
+          "coverage_probability": "0.95",
+          "magnitude": "0.3",
+          "uncertainty_class": "uexp",
+          "value": "1.0"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "uncertainty_class": "uexp",
+          "value": "1.0",
+          "magnitude": "0.3",
+          "coverage_factor": "0",
+          "coverage_probability": "0.95"
+        }
+      }
+    },
+    {
+      "id": "ctor.ucov",
+      "input": "ucov(1.024, 0.983, 1.088, 0.95)",
+      "term": {
+        "uncertainty": {
+          "coverage_probability": "0.95",
+          "lower": "0.983",
+          "uncertainty_class": "ucov",
+          "upper": "1.088",
+          "value": "1.024"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "uncertainty_class": "ucov",
+          "value": "1.024",
+          "lower": "0.983",
+          "upper": "1.088",
+          "coverage_probability": "0.95"
+        }
+      }
+    },
+    {
+      "id": "ctor.ucov.shortest",
+      "input": "ucov(1.024, 0.983, 1.088, 0.95, shortest)",
+      "term": {
+        "uncertainty": {
+          "coverage_probability": "0.95",
+          "interval_kind": "shortest",
+          "lower": "0.983",
+          "uncertainty_class": "ucov",
+          "upper": "1.088",
+          "value": "1.024"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "uncertainty_class": "ucov",
+          "value": "1.024",
+          "lower": "0.983",
+          "upper": "1.088",
+          "coverage_probability": "0.95",
+          "interval_kind": "shortest"
+        }
+      }
+    },
+    {
+      "id": "ctor.ucov.symmetric",
+      "input": "ucov(1.024, 0.983, 1.088, 0.95, symmetric)",
+      "term": {
+        "uncertainty": {
+          "coverage_probability": "0.95",
+          "interval_kind": "symmetric",
+          "lower": "0.983",
+          "uncertainty_class": "ucov",
+          "upper": "1.088",
+          "value": "1.024"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "uncertainty_class": "ucov",
+          "value": "1.024",
+          "lower": "0.983",
+          "upper": "1.088",
+          "coverage_probability": "0.95",
+          "interval_kind": "symmetric"
+        }
+      }
+    },
+    {
+      "id": "unit.quotient",
+      "input": "unit(m/s^2)",
+      "term": {
+        "unit": {
+          "literal": "m/s^2"
+        }
+      },
+      "corpus_term": {
+        "unit": {
+          "literal": "m/s^2"
+        }
+      }
+    },
+    {
+      "id": "unit.product",
+      "input": "unit(kg*m^2)",
+      "term": {
+        "unit": {
+          "literal": "kg*m^2"
+        }
+      },
+      "corpus_term": {
+        "unit": {
+          "literal": "kg*m^2"
+        }
+      }
+    },
+    {
+      "id": "unit.nested_depth_8",
+      "input": "unit((((((((m))))))))",
+      "term": {
+        "unit": {
+          "literal": "(((((((m)))))))"
+        }
+      },
+      "corpus_term": {
+        "unit": {
+          "literal": "(((((((m)))))))"
+        }
+      }
+    },
+    {
+      "id": "quantity.assertion",
+      "input": "unit(J::energy)",
+      "term": {
+        "unit": {
+          "literal": "J",
+          "quantity": "q:energy"
+        }
+      },
+      "corpus_term": {
+        "unit": {
+          "literal": "J",
+          "quantity": "q:energy"
+        }
+      }
+    },
+    {
+      "id": "quantity.whole",
+      "input": "unit(N*m::torque)",
+      "term": {
+        "unit": {
+          "literal": "N*m",
+          "quantity": "q:torque"
+        }
+      },
+      "corpus_term": {
+        "unit": {
+          "literal": "N*m",
+          "quantity": "q:torque"
+        }
+      }
+    },
+    {
+      "id": "quantity.spaced",
+      "input": "unit( J :: energy )",
+      "term": {
+        "unit": {
+          "literal": "J",
+          "quantity": "q:energy"
+        }
+      },
+      "corpus_term": {
+        "unit": {
+          "literal": "J",
+          "quantity": "q:energy"
+        }
+      }
+    },
+    {
+      "id": "quantity.name_with_brackets",
+      "input": "unit(J::ratio logarithm (Np))",
+      "term": {
+        "unit": {
+          "literal": "J",
+          "quantity": "q:logarithmic_decrement"
+        }
+      },
+      "corpus_term": {
+        "unit": {
+          "literal": "J",
+          "quantity": "q:logarithmic_decrement"
+        }
+      }
+    },
+    {
+      "id": "quantity.attached",
+      "input": "(10.3 +/- 0.2) unit(J::energy)",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.2",
+          "plus_minus": "+/-",
+          "unit": {
+            "literal": "J",
+            "quantity": "q:energy"
+          },
+          "value": "10.3"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "10.3",
+          "plus_minus": "+/-",
+          "magnitude": "0.2",
+          "unit": {
+            "literal": "J",
+            "quantity": "q:energy"
+          }
+        }
+      }
+    },
+    {
+      "id": "quantity.diff",
+      "input": "diff((5.0 +/- 0.1) unit(K::thermodynamic temperature))",
+      "term": {
+        "diff": {
+          "uncertainty": {
+            "magnitude": "0.1",
+            "plus_minus": "+/-",
+            "unit": {
+              "literal": "K",
+              "quantity": "q:temperature"
+            },
+            "value": "5.0"
+          }
+        }
+      },
+      "corpus_term": {
+        "diff": {
+          "uncertainty": {
+            "value": "5.0",
+            "plus_minus": "+/-",
+            "magnitude": "0.1",
+            "unit": {
+              "literal": "K",
+              "quantity": "q:temperature"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "diff.kelvin",
+      "input": "diff((5.0 +/- 0.1) unit(K))",
+      "term": {
+        "diff": {
+          "uncertainty": {
+            "magnitude": "0.1",
+            "plus_minus": "+/-",
+            "unit": {
+              "literal": "K"
+            },
+            "value": "5.0"
+          }
+        }
+      },
+      "corpus_term": {
+        "diff": {
+          "uncertainty": {
+            "value": "5.0",
+            "plus_minus": "+/-",
+            "magnitude": "0.1",
+            "unit": {
+              "literal": "K"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "diff.celsius",
+      "input": "diff((20.0 +/- 0.2) unit(degC))",
+      "term": {
+        "diff": {
+          "uncertainty": {
+            "magnitude": "0.2",
+            "plus_minus": "+/-",
+            "unit": {
+              "literal": "degC"
+            },
+            "value": "20.0"
+          }
+        }
+      },
+      "corpus_term": {
+        "diff": {
+          "uncertainty": {
+            "value": "20.0",
+            "plus_minus": "+/-",
+            "magnitude": "0.2",
+            "unit": {
+              "literal": "degC"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "measured.standard",
+      "input": "(10.3 +/- 0.2)",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.2",
+          "plus_minus": "+/-",
+          "value": "10.3"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "10.3",
+          "plus_minus": "+/-",
+          "magnitude": "0.2"
+        }
+      }
+    },
+    {
+      "id": "measured.negative",
+      "input": "(-1.230 +/- 0.004)",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.004",
+          "plus_minus": "+/-",
+          "value": "-1.230"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "-1.230",
+          "plus_minus": "+/-",
+          "magnitude": "0.004"
+        }
+      }
+    },
+    {
+      "id": "measured.spaced",
+      "input": "( 10.3 +/- 0.2 )",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.2",
+          "plus_minus": "+/-",
+          "value": "10.3"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "10.3",
+          "plus_minus": "+/-",
+          "magnitude": "0.2"
+        }
+      }
+    },
+    {
+      "id": "exponent.plain",
+      "input": "(3.85 +/- 0.23)e4",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.23",
+          "plus_minus": "+/-",
+          "shared_exponent": "4",
+          "value": "3.85"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "3.85",
+          "plus_minus": "+/-",
+          "magnitude": "0.23",
+          "shared_exponent": "4"
+        }
+      }
+    },
+    {
+      "id": "exponent.plus",
+      "input": "(3.85 +/- 0.23)e+4",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.23",
+          "plus_minus": "+/-",
+          "shared_exponent": "+4",
+          "value": "3.85"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "3.85",
+          "plus_minus": "+/-",
+          "magnitude": "0.23",
+          "shared_exponent": "+4"
+        }
+      }
+    },
+    {
+      "id": "exponent.minus",
+      "input": "(1.024 +/- 0.003)e-3",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.003",
+          "plus_minus": "+/-",
+          "shared_exponent": "-3",
+          "value": "1.024"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "1.024",
+          "plus_minus": "+/-",
+          "magnitude": "0.003",
+          "shared_exponent": "-3"
+        }
+      }
+    },
+    {
+      "id": "relative.integer",
+      "input": "(10.3 +/- 2%)",
+      "term": {
+        "uncertainty": {
+          "plus_minus": "+/-",
+          "relative_magnitude": "2",
+          "value": "10.3"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "10.3",
+          "plus_minus": "+/-",
+          "relative_magnitude": "2"
+        }
+      }
+    },
+    {
+      "id": "relative.decimal",
+      "input": "(10.3 +/- 0.5%)",
+      "term": {
+        "uncertainty": {
+          "plus_minus": "+/-",
+          "relative_magnitude": "0.5",
+          "value": "10.3"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "10.3",
+          "plus_minus": "+/-",
+          "relative_magnitude": "0.5"
+        }
+      }
+    },
+    {
+      "id": "tag.rect",
+      "input": "(10.3 +/- 0.2 ~rect)",
+      "term": {
+        "uncertainty": {
+          "distribution": "rect",
+          "magnitude": "0.2",
+          "plus_minus": "+/-",
+          "value": "10.3"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "10.3",
+          "plus_minus": "+/-",
+          "magnitude": "0.2",
+          "distribution": "rect"
+        }
+      }
+    },
+    {
+      "id": "tag.triang.unit",
+      "input": "(10.3 +/- 0.2 ~triang) unit(cm)",
+      "term": {
+        "uncertainty": {
+          "distribution": "triang",
+          "magnitude": "0.2",
+          "plus_minus": "+/-",
+          "unit": {
+            "literal": "cm"
+          },
+          "value": "10.3"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "10.3",
+          "plus_minus": "+/-",
+          "magnitude": "0.2",
+          "distribution": "triang",
+          "unit": {
+            "literal": "cm"
+          }
+        }
+      }
+    },
+    {
+      "id": "tag.arcsine.exponent",
+      "input": "(3.85 +/- 0.23 ~arcsine)e4",
+      "term": {
+        "uncertainty": {
+          "distribution": "arcsine",
+          "magnitude": "0.23",
+          "plus_minus": "+/-",
+          "shared_exponent": "4",
+          "value": "3.85"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "3.85",
+          "plus_minus": "+/-",
+          "magnitude": "0.23",
+          "distribution": "arcsine",
+          "shared_exponent": "4"
+        }
+      }
+    },
+    {
+      "id": "tag.relative",
+      "input": "(10.3 +/- 2% ~rect)",
+      "term": {
+        "uncertainty": {
+          "distribution": "rect",
+          "plus_minus": "+/-",
+          "relative_magnitude": "2",
+          "value": "10.3"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "10.3",
+          "plus_minus": "+/-",
+          "relative_magnitude": "2",
+          "distribution": "rect"
+        }
+      }
+    },
+    {
+      "id": "tag.unspaced",
+      "input": "(10.3 +/- 0.2~rect)",
+      "term": {
+        "uncertainty": {
+          "distribution": "rect",
+          "magnitude": "0.2",
+          "plus_minus": "+/-",
+          "value": "10.3"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "10.3",
+          "plus_minus": "+/-",
+          "magnitude": "0.2",
+          "distribution": "rect"
+        }
+      }
+    },
+    {
+      "id": "attach.measured",
+      "input": "(10.3 +/- 0.2) unit(cm)",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.2",
+          "plus_minus": "+/-",
+          "unit": {
+            "literal": "cm"
+          },
+          "value": "10.3"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "10.3",
+          "plus_minus": "+/-",
+          "magnitude": "0.2",
+          "unit": {
+            "literal": "cm"
+          }
+        }
+      }
+    },
+    {
+      "id": "attach.unspaced",
+      "input": "(10.3+/-0.2)unit(cm)",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.2",
+          "plus_minus": "+/-",
+          "unit": {
+            "literal": "cm"
+          },
+          "value": "10.3"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "10.3",
+          "plus_minus": "+/-",
+          "magnitude": "0.2",
+          "unit": {
+            "literal": "cm"
+          }
+        }
+      }
+    },
+    {
+      "id": "attach.exponent",
+      "input": "(3.85 +/- 0.23)e4 unit(m)",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.23",
+          "plus_minus": "+/-",
+          "shared_exponent": "4",
+          "unit": {
+            "literal": "m"
+          },
+          "value": "3.85"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "3.85",
+          "plus_minus": "+/-",
+          "magnitude": "0.23",
+          "shared_exponent": "4",
+          "unit": {
+            "literal": "m"
+          }
+        }
+      }
+    },
+    {
+      "id": "attach.relative",
+      "input": "(10.3 +/- 2%) unit(cm)",
+      "term": {
+        "uncertainty": {
+          "plus_minus": "+/-",
+          "relative_magnitude": "2",
+          "unit": {
+            "literal": "cm"
+          },
+          "value": "10.3"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "value": "10.3",
+          "plus_minus": "+/-",
+          "relative_magnitude": "2",
+          "unit": {
+            "literal": "cm"
+          }
+        }
+      }
+    },
+    {
+      "id": "attach.ustd",
+      "input": "ustd(1.230, 0.004) unit(g)",
+      "term": {
+        "uncertainty": {
+          "magnitude": "0.004",
+          "uncertainty_class": "ustd",
+          "unit": {
+            "literal": "g"
+          },
+          "value": "1.230"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "uncertainty_class": "ustd",
+          "value": "1.230",
+          "magnitude": "0.004",
+          "unit": {
+            "literal": "g"
+          }
+        }
+      }
+    },
+    {
+      "id": "attach.uexp",
+      "input": "uexp(100.02147, 0.00079, 2) unit(g)",
+      "term": {
+        "uncertainty": {
+          "coverage_factor": "2",
+          "magnitude": "0.00079",
+          "uncertainty_class": "uexp",
+          "unit": {
+            "literal": "g"
+          },
+          "value": "100.02147"
+        }
+      },
+      "corpus_term": {
+        "uncertainty": {
+          "uncertainty_class": "uexp",
+          "value": "100.02147",
+          "magnitude": "0.00079",
+          "coverage_factor": "2",
+          "unit": {
+            "literal": "g"
+          }
+        }
+      }
+    }
+  ],
+  "refused": [
+    {
+      "id": "ctor.arity.uexp",
+      "input": "uexp(10.0, 0.3)",
+      "category": "constructor-arity",
+      "byte_offset": 14,
+      "char_offset": 14,
+      "corpus": {
+        "category": "constructor-arity",
+        "byte_offset": 14,
+        "char_offset": 14
+      }
+    },
+    {
+      "id": "ctor.arity.quoted_unit",
+      "input": "ustd(1.230, 0.004, \"unitsml(g)\")",
+      "category": "constructor-arity",
+      "byte_offset": 17,
+      "char_offset": 17,
+      "corpus": {
+        "category": "constructor-arity",
+        "byte_offset": 17,
+        "char_offset": 17
+      }
+    },
+    {
+      "id": "ctor.argument.signed_magnitude",
+      "input": "ustd(1.2, -0.1)",
+      "category": "constructor-argument",
+      "byte_offset": 10,
+      "char_offset": 10,
+      "corpus": {
+        "category": "constructor-argument",
+        "byte_offset": 10,
+        "char_offset": 10
+      }
+    },
+    {
+      "id": "ctor.argument.exponent",
+      "input": "ustd(1.2e3, 0.1)",
+      "category": "constructor-argument",
+      "byte_offset": 8,
+      "char_offset": 8,
+      "corpus": {
+        "category": "constructor-argument",
+        "byte_offset": 8,
+        "char_offset": 8
+      }
+    },
+    {
+      "id": "ctor.argument.interval_kind",
+      "input": "ucov(1.024, 0.983, 1.088, 0.95, probabilistically-symmetric)",
+      "category": "constructor-argument",
+      "byte_offset": 30,
+      "char_offset": 30,
+      "corpus": {
+        "category": "constructor-argument",
+        "byte_offset": 30,
+        "char_offset": 30
+      }
+    },
+    {
+      "id": "adjacency.reserved_word",
+      "input": "ustd (1.2, 0.1)",
+      "category": "adjacency",
+      "byte_offset": 4,
+      "char_offset": 4,
+      "corpus": {
+        "category": "adjacency",
+        "byte_offset": 4,
+        "char_offset": 4
+      }
+    },
+    {
+      "id": "adjacency.exponent",
+      "input": "(3.85 +/- 0.23) e4",
+      "category": "adjacency",
+      "byte_offset": 16,
+      "char_offset": 16,
+      "corpus": {
+        "category": "adjacency",
+        "byte_offset": 16,
+        "char_offset": 16
+      }
+    },
+    {
+      "id": "adjacency.plus_minus",
+      "input": "(10.3 + / - 0.2)",
+      "category": "adjacency",
+      "byte_offset": 6,
+      "char_offset": 6,
+      "corpus": {
+        "category": "adjacency",
+        "byte_offset": 6,
+        "char_offset": 6
+      }
+    },
+    {
+      "id": "adjacency.diff",
+      "input": "diff ((5.0 +/- 0.1) unit(K))",
+      "category": "adjacency",
+      "byte_offset": 0,
+      "char_offset": 0,
+      "corpus": {
+        "category": "adjacency",
+        "byte_offset": 0,
+        "char_offset": 0
+      }
+    },
+    {
+      "id": "reserved.ustd",
+      "input": "ustd",
+      "category": "reserved-word",
+      "byte_offset": 4,
+      "char_offset": 4,
+      "corpus": {
+        "category": "reserved-word",
+        "byte_offset": 4,
+        "char_offset": 4
+      }
+    },
+    {
+      "id": "reserved.unit",
+      "input": "unit",
+      "category": "reserved-word",
+      "byte_offset": 0,
+      "char_offset": 0,
+      "corpus": {
+        "category": "reserved-word",
+        "byte_offset": 0,
+        "char_offset": 0
+      }
+    },
+    {
+      "id": "reserved.quantity_call",
+      "input": "quantity(x)",
+      "category": "reserved-word",
+      "byte_offset": 0,
+      "char_offset": 0,
+      "corpus": {
+        "category": "reserved-word",
+        "byte_offset": 0,
+        "char_offset": 0
+      }
+    },
+    {
+      "id": "reserved.quantity",
+      "input": "quantity",
+      "category": "reserved-word",
+      "byte_offset": 0,
+      "char_offset": 0,
+      "corpus": {
+        "category": "reserved-word",
+        "byte_offset": 0,
+        "char_offset": 0
+      }
+    },
+    {
+      "id": "unit.quoted",
+      "input": "unit(\"m\")",
+      "category": "unit-expression",
+      "byte_offset": 6,
+      "char_offset": 6,
+      "corpus": {
+        "category": "unit-expression",
+        "byte_offset": 6,
+        "char_offset": 6
+      }
+    },
+    {
+      "id": "unit.unknown",
+      "input": "unit(furlongs)",
+      "category": "unit-expression",
+      "byte_offset": 9,
+      "char_offset": 9,
+      "corpus": {
+        "category": "unit-expression",
+        "byte_offset": 9,
+        "char_offset": 9
+      }
+    },
+    {
+      "id": "unit.empty",
+      "input": "unit()",
+      "category": "unit-expression",
+      "byte_offset": 5,
+      "char_offset": 5,
+      "corpus": {
+        "category": "unit-expression",
+        "byte_offset": 5,
+        "char_offset": 5
+      }
+    },
+    {
+      "id": "unit.depth_9",
+      "input": "unit(((((((((m))))))))))",
+      "category": "unit-expression",
+      "byte_offset": 23,
+      "char_offset": 23,
+      "corpus": {
+        "category": "unit-expression",
+        "byte_offset": 23,
+        "char_offset": 23
+      }
+    },
+    {
+      "id": "unit.attached_unknown",
+      "input": "(10.3 +/- 0.2) unit(furlongs)",
+      "category": "unit-expression",
+      "byte_offset": 24,
+      "char_offset": 24,
+      "corpus": {
+        "category": "unit-expression",
+        "byte_offset": 24,
+        "char_offset": 24
+      }
+    },
+    {
+      "id": "unit.non_ascii",
+      "input": "unit(Ωfurlong)",
+      "category": "unit-expression",
+      "byte_offset": 5,
+      "char_offset": 5,
+      "corpus": {
+        "category": "unit-expression",
+        "byte_offset": 5,
+        "char_offset": 5
+      }
+    },
+    {
+      "id": "attach.second_unit_non_ascii",
+      "input": "(10.3 +/- 0.2) unit(µm) unit(m)",
+      "category": "unit-attachment",
+      "byte_offset": 25,
+      "char_offset": 24,
+      "corpus": {
+        "category": "unit-attachment",
+        "byte_offset": 25,
+        "char_offset": 24
+      }
+    },
+    {
+      "id": "pm.plus_minus",
+      "input": "(10.3 +- 0.2)",
+      "category": "plus-minus-spelling",
+      "byte_offset": 6,
+      "char_offset": 6,
+      "corpus": {
+        "category": "plus-minus-spelling",
+        "byte_offset": 6,
+        "char_offset": 6
+      }
+    },
+    {
+      "id": "pm.word",
+      "input": "(10.3 pm 0.2)",
+      "category": "plus-minus-spelling",
+      "byte_offset": 6,
+      "char_offset": 6,
+      "corpus": {
+        "category": "plus-minus-spelling",
+        "byte_offset": 6,
+        "char_offset": 6
+      }
+    },
+    {
+      "id": "pm.sign",
+      "input": "(10.3 ± 0.2)",
+      "category": "plus-minus-spelling",
+      "byte_offset": 6,
+      "char_offset": 6,
+      "corpus": {
+        "category": "plus-minus-spelling",
+        "byte_offset": 6,
+        "char_offset": 6
+      }
+    },
+    {
+      "id": "measured.signed_magnitude",
+      "input": "(10.3 +/- -0.2)",
+      "category": "measured-literal",
+      "byte_offset": 10,
+      "char_offset": 10,
+      "corpus": {
+        "category": "measured-literal",
+        "byte_offset": 10,
+        "char_offset": 10
+      }
+    },
+    {
+      "id": "measured.letter",
+      "input": "(x +/- 0.2)",
+      "category": "measured-literal",
+      "byte_offset": 1,
+      "char_offset": 1,
+      "corpus": {
+        "category": "measured-literal",
+        "byte_offset": 1,
+        "char_offset": 1
+      }
+    },
+    {
+      "id": "measured.unbracketed",
+      "input": "10.3 +/- 0.2",
+      "category": "measured-literal",
+      "byte_offset": 0,
+      "char_offset": 0,
+      "corpus": {
+        "category": "measured-literal",
+        "byte_offset": 0,
+        "char_offset": 0
+      }
+    },
+    {
+      "id": "exponent.incomplete",
+      "input": "(3.85 +/- 0.23)e",
+      "category": "shared-exponent",
+      "byte_offset": 15,
+      "char_offset": 15,
+      "corpus": {
+        "category": "shared-exponent",
+        "byte_offset": 15,
+        "char_offset": 15
+      }
+    },
+    {
+      "id": "exponent.decimal",
+      "input": "(3.85 +/- 0.23)e4.5",
+      "category": "shared-exponent",
+      "byte_offset": 17,
+      "char_offset": 17,
+      "corpus": {
+        "category": "shared-exponent",
+        "byte_offset": 17,
+        "char_offset": 17
+      }
+    },
+    {
+      "id": "exponent.relative",
+      "input": "(3.85 +/- 2%)e4",
+      "category": "shared-exponent",
+      "byte_offset": 13,
+      "char_offset": 13,
+      "corpus": {
+        "category": "shared-exponent",
+        "byte_offset": 13,
+        "char_offset": 13
+      }
+    },
+    {
+      "id": "exponent.constructor",
+      "input": "ustd((3.85, 0.23)e4)",
+      "category": "shared-exponent",
+      "byte_offset": 5,
+      "char_offset": 5,
+      "corpus": {
+        "category": "shared-exponent",
+        "byte_offset": 5,
+        "char_offset": 5
+      }
+    },
+    {
+      "id": "exponent.plain_number",
+      "input": "1.2e3",
+      "category": "shared-exponent",
+      "byte_offset": 0,
+      "char_offset": 0,
+      "corpus": {
+        "category": "shared-exponent",
+        "byte_offset": 0,
+        "char_offset": 0
+      }
+    },
+    {
+      "id": "relative.spaced",
+      "input": "(10.3 +/- 2 %)",
+      "category": "relative",
+      "byte_offset": 12,
+      "char_offset": 12,
+      "corpus": {
+        "category": "relative",
+        "byte_offset": 12,
+        "char_offset": 12
+      }
+    },
+    {
+      "id": "relative.signed",
+      "input": "(10.3 +/- -2%)",
+      "category": "relative",
+      "byte_offset": 10,
+      "char_offset": 10,
+      "corpus": {
+        "category": "relative",
+        "byte_offset": 10,
+        "char_offset": 10
+      }
+    },
+    {
+      "id": "relative.on_value",
+      "input": "(10.3% +/- 2)",
+      "category": "relative",
+      "byte_offset": 5,
+      "char_offset": 5,
+      "corpus": {
+        "category": "relative",
+        "byte_offset": 5,
+        "char_offset": 5
+      }
+    },
+    {
+      "id": "tag.renamed_u",
+      "input": "(10.3 +/- 0.2 ~U)",
+      "category": "distribution-tag",
+      "byte_offset": 14,
+      "char_offset": 14,
+      "corpus": {
+        "category": "distribution-tag",
+        "byte_offset": 14,
+        "char_offset": 14
+      }
+    },
+    {
+      "id": "tag.type_b",
+      "input": "(10.3 +/- 0.2 ~typeB)",
+      "category": "distribution-tag",
+      "byte_offset": 14,
+      "char_offset": 14,
+      "corpus": {
+        "category": "distribution-tag",
+        "byte_offset": 14,
+        "char_offset": 14
+      }
+    },
+    {
+      "id": "tag.spaced",
+      "input": "(10.3 +/- 0.2 ~ rect)",
+      "category": "distribution-tag",
+      "byte_offset": 14,
+      "char_offset": 14,
+      "corpus": {
+        "category": "distribution-tag",
+        "byte_offset": 14,
+        "char_offset": 14
+      }
+    },
+    {
+      "id": "tag.unknown",
+      "input": "(10.3 +/- 0.2 ~gauss)",
+      "category": "distribution-tag",
+      "byte_offset": 14,
+      "char_offset": 14,
+      "corpus": {
+        "category": "distribution-tag",
+        "byte_offset": 14,
+        "char_offset": 14
+      }
+    },
+    {
+      "id": "tag.outside",
+      "input": "(10.3 +/- 0.2) ~rect",
+      "category": "distribution-tag",
+      "byte_offset": 15,
+      "char_offset": 15,
+      "corpus": {
+        "category": "distribution-tag",
+        "byte_offset": 15,
+        "char_offset": 15
+      }
+    },
+    {
+      "id": "tag.before_plus_minus",
+      "input": "(10.3 ~rect +/- 0.2)",
+      "category": "distribution-tag",
+      "byte_offset": 6,
+      "char_offset": 6,
+      "corpus": {
+        "category": "distribution-tag",
+        "byte_offset": 6,
+        "char_offset": 6
+      }
+    },
+    {
+      "id": "tag.constructor",
+      "input": "ustd(1.2, 0.1 ~rect)",
+      "category": "distribution-tag",
+      "byte_offset": 14,
+      "char_offset": 14,
+      "corpus": {
+        "category": "distribution-tag",
+        "byte_offset": 14,
+        "char_offset": 14
+      }
+    },
+    {
+      "id": "attach.second_unit",
+      "input": "(10.3 +/- 0.2) unit(cm) unit(m)",
+      "category": "unit-attachment",
+      "byte_offset": 24,
+      "char_offset": 24,
+      "corpus": {
+        "category": "unit-attachment",
+        "byte_offset": 24,
+        "char_offset": 24
+      }
+    },
+    {
+      "id": "attach.inside_constructor",
+      "input": "ustd(1.230, 0.004, unit(g))",
+      "category": "unit-attachment",
+      "byte_offset": 17,
+      "char_offset": 17,
+      "corpus": {
+        "category": "unit-attachment",
+        "byte_offset": 17,
+        "char_offset": 17
+      }
+    },
+    {
+      "id": "attach.plain_number",
+      "input": "9.81 unit(m/s^2)",
+      "category": "unit-attachment",
+      "byte_offset": 0,
+      "char_offset": 0,
+      "corpus": {
+        "category": "unit-attachment",
+        "byte_offset": 0,
+        "char_offset": 0
+      }
+    },
+    {
+      "id": "attach.diff_plain_number",
+      "input": "diff(5 unit(K))",
+      "category": "unit-attachment",
+      "byte_offset": 5,
+      "char_offset": 5,
+      "corpus": {
+        "category": "unit-attachment",
+        "byte_offset": 5,
+        "char_offset": 5
+      }
+    },
+    {
+      "id": "quantity.no_quantity",
+      "input": "unit(J::)",
+      "category": "quantity-assertion",
+      "byte_offset": 6,
+      "char_offset": 6,
+      "corpus": {
+        "category": "quantity-assertion",
+        "byte_offset": 6,
+        "char_offset": 6
+      }
+    },
+    {
+      "id": "quantity.no_unit",
+      "input": "unit(::energy)",
+      "category": "quantity-assertion",
+      "byte_offset": 5,
+      "char_offset": 5,
+      "corpus": {
+        "category": "quantity-assertion",
+        "byte_offset": 5,
+        "char_offset": 5
+      }
+    },
+    {
+      "id": "quantity.twice",
+      "input": "unit(J::energy::work)",
+      "category": "quantity-assertion",
+      "byte_offset": 14,
+      "char_offset": 14,
+      "corpus": {
+        "category": "quantity-assertion",
+        "byte_offset": 14,
+        "char_offset": 14
+      }
+    },
+    {
+      "id": "quantity.nested",
+      "input": "unit((N::force)*m)",
+      "category": "quantity-assertion",
+      "byte_offset": 5,
+      "char_offset": 5,
+      "corpus": {
+        "category": "quantity-assertion",
+        "byte_offset": 5,
+        "char_offset": 5
+      }
+    },
+    {
+      "id": "quantity.unknown",
+      "input": "unit(J::nonsense)",
+      "category": "quantity-assertion",
+      "byte_offset": 8,
+      "char_offset": 8,
+      "corpus": {
+        "category": "quantity-assertion",
+        "byte_offset": 8,
+        "char_offset": 8
+      }
+    },
+    {
+      "id": "quantity.outside_unit",
+      "input": "::energy",
+      "category": "quantity-assertion",
+      "byte_offset": 0,
+      "char_offset": 0,
+      "corpus": {
+        "category": "quantity-assertion",
+        "byte_offset": 0,
+        "char_offset": 0
+      }
+    },
+    {
+      "id": "quantity.trailing_text",
+      "input": "unit(J::energy x)",
+      "category": "quantity-assertion",
+      "byte_offset": 8,
+      "char_offset": 8,
+      "corpus": {
+        "category": "quantity-assertion",
+        "byte_offset": 8,
+        "char_offset": 8
+      }
+    },
+    {
+      "id": "concise.plain",
+      "input": "10.3(2)",
+      "category": "concise",
+      "byte_offset": 0,
+      "char_offset": 0,
+      "corpus": {
+        "category": "concise",
+        "byte_offset": 0,
+        "char_offset": 0
+      }
+    },
+    {
+      "id": "concise.bracketed",
+      "input": "(10.3(2))",
+      "category": "concise",
+      "byte_offset": 5,
+      "char_offset": 5,
+      "corpus": {
+        "category": "concise",
+        "byte_offset": 5,
+        "char_offset": 5
+      }
+    },
+    {
+      "id": "concise.exponent",
+      "input": "(680(41))e-3",
+      "category": "concise",
+      "byte_offset": 4,
+      "char_offset": 4,
+      "corpus": {
+        "category": "concise",
+        "byte_offset": 4,
+        "char_offset": 4
+      }
+    },
+    {
+      "id": "concise.constructor",
+      "input": "ustd(1.230(4))",
+      "category": "concise",
+      "byte_offset": 10,
+      "char_offset": 10,
+      "corpus": {
+        "category": "concise",
+        "byte_offset": 10,
+        "char_offset": 10
+      }
+    },
+    {
+      "id": "none.empty",
+      "input": "",
+      "category": "no-production",
+      "byte_offset": 0,
+      "char_offset": 0,
+      "corpus": {
+        "category": "no-production",
+        "byte_offset": 0,
+        "char_offset": 0
+      }
+    },
+    {
+      "id": "none.expression",
+      "input": "x + y",
+      "category": "no-production",
+      "byte_offset": 0,
+      "char_offset": 0,
+      "corpus": {
+        "category": "no-production",
+        "byte_offset": 0,
+        "char_offset": 0
+      }
+    },
+    {
+      "id": "none.diff_without_unit",
+      "input": "diff(ustd(1.0, 0.1))",
+      "category": "no-production",
+      "byte_offset": 19,
+      "char_offset": 19,
+      "corpus": {
+        "category": "no-production",
+        "byte_offset": 19,
+        "char_offset": 19
+      }
+    },
+    {
+      "id": "none.two_terms",
+      "input": "unit(m) unit(s)",
+      "category": "unit-attachment",
+      "byte_offset": 8,
+      "char_offset": 8,
+      "corpus": {
+        "category": "unit-attachment",
+        "byte_offset": 8,
+        "char_offset": 8
+      }
+    }
+  ]
+}

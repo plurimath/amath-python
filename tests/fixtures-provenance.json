@@ -1,0 +1,28 @@
+{
+  "raw": {
+    "source_repository": "https://github.com/plurimath/amath",
+    "source_commit": "fbc20c95bdd04ef7952dc07ccf6d197b8f16bc84",
+    "source_files": {
+      "artifacts/asciimath.json": "f7e812476e125729e4f69c00d08083d69e83b4666d3c33b911e3ab88d30988da",
+      "artifacts/asciimath.bindings.python.json": "2bf9e6723f1c1d66aa8853fd8095e1c908f60f17b034347fe12d858e3b0bf129",
+      "grammars/asciimath.parg": "8fc391577745dec67f31913a54de1060c6856f5514ed3c11300724a462ae8cfb",
+      "grammars/asciimath.wrappers.json": "ef2919bef0d3581eb5bfe93dfc268cf85961fb69794b6730f792b14c0a0b6618",
+      "lib/amath/raw_tree.rb": "9704233cb6385a33006ad543b80bfd02c3f4d55bb20396fc9a67d45996e8c245",
+      "lib/amath/renester.rb": "d5b17ebeafb79b1ccfe9477d519c3e91d0bfc9b5e8c76f12a6828f87ee68492d",
+      "lib/amath/error_position.rb": "8e66fca542b7a89537042981036ee3b5f4cf31345df99e46cb61cc0f739dbf42"
+    },
+    "ruby_version": "4.0.1",
+    "parsanol_ruby_version": "1.3.134",
+    "boundary": "legacy raw tree; slices retain byte offsets and character lengths",
+    "sha256": "638d08a222ad58015e97a736fe6c65929657dd9704d0e04357a224b3016601fb"
+  },
+  "model": {
+    "source_repository": "https://github.com/plurimath/amath-rs",
+    "source_commit": "da41025b558fba1b7bd18e35a6c80aef8bca987d",
+    "abi_version": 1,
+    "native_library_sha256": "9f14e2fe62eb01411dbafb3193c4fc90c339af0599c188fe7f9f801db59e6dfe",
+    "sha256": "48adeb77c8c817eaf711d2a96c121f59bb74c4213b2973420af86e74f514528b",
+    "boundary": "exact canonical Rust-produced codec JSON fixtures; no lossless/idempotent claim",
+    "public_source_commit": "a9a1fdc3b983f4ea8b95b800ecf6c111b3e3a15e"
+  }
+}

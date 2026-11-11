@@ -1,0 +1,17 @@
+{
+  "language": "asciimath",
+  "generation": 3,
+  "source_corpus_commit": "0d50db714d75e3883a507fbc47022eb547fb027f",
+  "provenance_sha256": "538f882f22c690f61b9a19c92fb66e283152a71e1055393df78cb1e22d04fcd3",
+  "snapshot_digest": "sha256:3f21c04362c9ce495b44744badb9b6f511cef22d242a18214ac86e0ccee0e0df",
+  "payloads": [
+    {
+      "path": "payloads/uncertainty-shared-exponent.yaml",
+      "sha256": "a743446d09779e7d47fe3eee415d7be5bc403574c6634b70daa54ace5e2fa1ed",
+      "bytes": 11404
+    }
+  ],
+  "fixture_sha256": "65cea69e41ae4cb4cd5a2f4fa6952a8fd78309d056c4f99b9f2fbc4a207a8dc1",
+  "row_count": 10,
+  "source_gates": "payload byte sizes/SHA256 and frozen provenance SHA verified by extract-vectors.mjs; cases copied without expected-value changes"
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "amath-raw-profiles-provenance/v1",
+  "current_payload": {
+    "path": "tests/fixtures/current-raw-a4ed231-v1.json",
+    "sha256": "4836ac22559e0ff5d0f08bf9278e874f80162c5c39c1570233a5aacba39038a2"
+  },
+  "generator": {
+    "path": "scripts/generate-current-raw-values.rb",
+    "sha256": "49b2674d6f80f578c8c791b1d467532a87fc321921c1879efc581b8c4f91fcc4"
+  },
+  "archived_fixture": {
+    "path": "tests/fixtures/full-legacy-values.json",
+    "sha256": "8cda7699fac2958021e5bfc357e66b66fb0e50baa002149bd0ce99ca81cea476",
+    "producer": {
+      "repository": "https://github.com/plurimath/plurimath",
+      "commit": "ed048ee2d39cb3b2f13c83c6fdf536e77e63f650",
+      "version": "0.11.12",
+      "semantic_boundary": "facade-outputs",
+      "configuration": {},
+      "generator": {
+        "repository": "https://github.com/plurimath/plurimath-testsuite",
+        "commit": "fef72bd82d15e094d3435ff4c9e0f1065fb80804",
+        "path": "scripts/generate-corpus.rb",
+        "sha256": "13f2d4292967aa6af018f3701ca0eb6930e3e7892dbc0d7a340b29fde0391756"
+      }
+    },
+    "generator_hash_sorting_contract": "scripts/generate-corpus.rb@fef72bd82d15e094d3435ff4c9e0f1065fb80804 serialize_tree_hash explicitly sorts Hash keys, treating parser insertion order as implementation detail"
+  },
+  "qualification": {
+    "cases": 160,
+    "source_excluded": 13,
+    "current_native_ruby_ordered_agreement": 160,
+    "same_values": 160,
+    "only_member_order_differs": 77,
+    "structural_differences": 0,
+    "slice_offsets_in_this_profile": false,
+    "public_semantics_proven_by_raw_values": false
+  }
+}
