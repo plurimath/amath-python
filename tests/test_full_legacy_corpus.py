@@ -1,5 +1,5 @@
 """Full frozen source vectors; enabled only in native platform CI."""
-import json,os
+import hashlib,json,os
 from pathlib import Path
 import unittest
 import amath as stage
@@ -47,7 +47,32 @@ class FullLegacyCorpusTests(unittest.TestCase):
             return value
         corpus=json.loads((Path(__file__).parent/'fixtures/full-legacy-values.json').read_text())
         self.assertEqual(len(corpus['cases']),160);self.assertEqual(len(corpus['excluded']),13)
+        # The frozen producer sorts Hash keys for stable files and treats parser
+        # insertion order as an implementation detail (raw-profiles-provenance-v1.json,
+        # generator_hash_sorting_contract). Values, arrays (ordered) and all 160 inputs
+        # stay asserted verbatim; dict equality ignores only member order. Member order
+        # is asserted separately against the current producer profile below.
         for row in corpus['cases']:
             with self.subTest(id=row['id']):
                 result=stage.parse_legacy_raw(row['input'],decimal=row.get('decimal','.'))
-                self.assertEqual(ordered(without_slices(result.tree)),ordered(row['tree']))
+                self.assertEqual(without_slices(result.tree),without_slices(row['tree']))
+
+    def test_complete_current_producer_member_order(self):
+        fixtures=Path(__file__).parent/'fixtures'
+        provenance=json.loads((fixtures/'raw-profiles-provenance-v1.json').read_text())
+        payload=(fixtures/'current-raw-a4ed231-v1.json').read_bytes()
+        self.assertEqual(hashlib.sha256(payload).hexdigest(),provenance['current_payload']['sha256'])
+        current=json.loads(payload);archived=json.loads((fixtures/'full-legacy-values.json').read_text())
+        self.assertEqual(len(current['cases']),160);self.assertEqual(current['excluded'],archived['excluded'])
+        self.assertTrue(current['producer']['engine_agreement'])
+        def ordered_values(value):
+            if isinstance(value,dict):
+                if set(value)=={'offset','length','line','column','value'}:return value['value']
+                return [[key,ordered_values(child)]for key,child in value.items()]
+            if isinstance(value,list):return [ordered_values(child)for child in value]
+            return value
+        for row,old in zip(current['cases'],archived['cases']):
+            with self.subTest(id=row['id']):
+                self.assertEqual((row['id'],row['input']),(old['id'],old['input']))
+                result=stage.parse_legacy_raw(row['input'],decimal=row['decimal'])
+                self.assertEqual(ordered_values(result.tree),ordered_values(row['tree']))

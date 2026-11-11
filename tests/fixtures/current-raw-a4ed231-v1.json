@@ -1,0 +1,3470 @@
+{
+  "schema": "amath-current-raw-values/v1",
+  "profile": "Amath::Parser.raw@a4ed231057aeb98022f5c825807e888946a9e71c",
+  "producer": {
+    "repository": "https://github.com/plurimath/amath",
+    "commit": "a4ed231057aeb98022f5c825807e888946a9e71c",
+    "entry_point": "Amath::Parser.raw",
+    "engines": [
+      "native",
+      "ruby"
+    ],
+    "engine_agreement": true,
+    "ruby": "4.0.1",
+    "parsanol": "1.3.134",
+    "source_files": {
+      "lib/amath/parser.rb": "00303121a29e5b32419024f417b0f8060c05df4bf21347c9be12f4425dc190e6",
+      "lib/amath/raw_tree.rb": "9704233cb6385a33006ad543b80bfd02c3f4d55bb20396fc9a67d45996e8c245",
+      "lib/amath/renester.rb": "d5b17ebeafb79b1ccfe9477d519c3e91d0bfc9b5e8c76f12a6828f87ee68492d",
+      "lib/amath/engine.rb": "53f781de91f85aa44a8b2f0d929425da0628eacc2d6114fddd852ab845a4666b",
+      "grammars/asciimath.parg": "8fc391577745dec67f31913a54de1060c6856f5514ed3c11300724a462ae8cfb",
+      "artifacts/asciimath.json": "f7e812476e125729e4f69c00d08083d69e83b4666d3c33b911e3ab88d30988da",
+      "Gemfile.lock": "cb1fbbaa6fb64f4b0927cab723fe6f1b00361b3fd6e80c9cb095dccf107d673d"
+    },
+    "generator_sha256": "49b2674d6f80f578c8c791b1d467532a87fc321921c1879efc581b8c4f91fcc4",
+    "native_modules": {
+      "lib/parsanol/4.0/parsanol_native.so": "de575e623e0152db1fd8c69f2828c3973577c7676cdb56ddd34ca10c35fc3981"
+    }
+  },
+  "archived_reference": {
+    "repository": "https://github.com/plurimath/plurimath-testsuite",
+    "commit": "0d50db714d75e3883a507fbc47022eb547fb027f",
+    "generation": 3,
+    "boundary": "legacy-raw-tree-without-offsets",
+    "sha256": "8cda7699fac2958021e5bfc357e66b66fb0e50baa002149bd0ce99ca81cea476"
+  },
+  "cases": [
+    {
+      "id": "colour-named",
+      "input": "color(red)(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "color": {
+            "intermediate_exp": {
+              "lparen": "(",
+              "rgb_color": {
+                "expr": {
+                  "sequence": {
+                    "symbol": "r"
+                  },
+                  "expr": {
+                    "sequence": {
+                      "symbol": "e"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "d"
+                      }
+                    }
+                  }
+                }
+              },
+              "rparen": ")"
+            }
+          },
+          "color_value": {
+            "intermediate_exp": {
+              "lparen": "(",
+              "expr": {
+                "expr": {
+                  "sequence": {
+                    "symbol": "x"
+                  }
+                }
+              },
+              "rparen": ")"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "colour-in-sum",
+      "input": "color(blue)(x) + y",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "color": {
+            "intermediate_exp": {
+              "lparen": "(",
+              "rgb_color": {
+                "expr": {
+                  "sequence": {
+                    "symbol": "b"
+                  },
+                  "expr": {
+                    "sequence": {
+                      "symbol": "l"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "u"
+                      },
+                      "expr": {
+                        "sequence": {
+                          "symbol": "e"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "rparen": ")"
+            }
+          },
+          "color_value": {
+            "intermediate_exp": {
+              "lparen": "(",
+              "expr": {
+                "expr": {
+                  "sequence": {
+                    "symbol": "x"
+                  }
+                }
+              },
+              "rparen": ")"
+            }
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "+"
+            },
+            "expr": {
+              "sequence": {
+                "symbol": "y"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fence-round-single",
+      "input": "(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "intermediate_exp": {
+              "lparen": "(",
+              "expr": {
+                "expr": {
+                  "sequence": {
+                    "symbol": "x"
+                  }
+                }
+              },
+              "rparen": ")"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fence-round-expression",
+      "input": "(x+y)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "intermediate_exp": {
+              "lparen": "(",
+              "expr": {
+                "expr": {
+                  "sequence": {
+                    "symbol": "x"
+                  },
+                  "expr": {
+                    "sequence": {
+                      "symbol": "+"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "y"
+                      }
+                    }
+                  }
+                }
+              },
+              "rparen": ")"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fence-square-pair",
+      "input": "[a,b]",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "intermediate_exp": {
+              "lparen": "[",
+              "expr": {
+                "expr": {
+                  "sequence": {
+                    "symbol": "a"
+                  },
+                  "expr": {
+                    "comma": ",",
+                    "expr": {
+                      "sequence": {
+                        "symbol": "b"
+                      }
+                    }
+                  }
+                }
+              },
+              "rparen": "]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fence-curly-single",
+      "input": "{x}",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "intermediate_exp": {
+              "lparen": "{",
+              "expr": {
+                "expr": {
+                  "sequence": {
+                    "symbol": "x"
+                  }
+                }
+              },
+              "rparen": "}"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fence-round-triple",
+      "input": "(a,b,c)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "intermediate_exp": {
+              "lparen": "(",
+              "expr": {
+                "expr": {
+                  "sequence": {
+                    "symbol": "a"
+                  },
+                  "expr": {
+                    "comma": ",",
+                    "expr": {
+                      "sequence": {
+                        "symbol": "b"
+                      },
+                      "expr": {
+                        "comma": ",",
+                        "expr": {
+                          "sequence": {
+                            "symbol": "c"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "rparen": ")"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fence-over-number",
+      "input": "(x+y)/2",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "frac": {
+            "numerator": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "+"
+                      },
+                      "expr": {
+                        "sequence": {
+                          "symbol": "y"
+                        }
+                      }
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            },
+            "denominator": {
+              "sequence": {
+                "number": "2"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "font-bold",
+      "input": "bb(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "fonts_class": "bb",
+            "fonts_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "font-blackboard",
+      "input": "bbb(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "fonts_class": "bbb",
+            "fonts_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "font-script",
+      "input": "cc(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "fonts_class": "cc",
+            "fonts_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "font-typewriter",
+      "input": "tt(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "fonts_class": "tt",
+            "fonts_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "font-fraktur",
+      "input": "fr(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "fonts_class": "fr",
+            "fonts_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "font-sans-serif",
+      "input": "sf(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "fonts_class": "sf",
+            "fonts_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "font-mixed",
+      "input": "bb(A) + cc(B)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "fonts_class": "bb",
+            "fonts_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "A"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "+"
+            },
+            "expr": {
+              "sequence": {
+                "fonts_class": "cc",
+                "fonts_value": {
+                  "intermediate_exp": {
+                    "lparen": "(",
+                    "expr": {
+                      "expr": {
+                        "sequence": {
+                          "symbol": "B"
+                        }
+                      }
+                    },
+                    "rparen": ")"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "frac-simple",
+      "input": "a/b",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "frac": {
+            "numerator": {
+              "symbol": "a"
+            },
+            "denominator": {
+              "sequence": {
+                "symbol": "b"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "frac-numeric",
+      "input": "2/3",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "frac": {
+            "numerator": {
+              "number": "2"
+            },
+            "denominator": {
+              "sequence": {
+                "number": "3"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "frac-fenced-numerator",
+      "input": "(a+b)/c",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "frac": {
+            "numerator": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "a"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "+"
+                      },
+                      "expr": {
+                        "sequence": {
+                          "symbol": "b"
+                        }
+                      }
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            },
+            "denominator": {
+              "sequence": {
+                "symbol": "c"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "frac-fenced-denominator",
+      "input": "x/(y+z)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "frac": {
+            "numerator": {
+              "symbol": "x"
+            },
+            "denominator": {
+              "sequence": {
+                "intermediate_exp": {
+                  "lparen": "(",
+                  "expr": {
+                    "expr": {
+                      "sequence": {
+                        "symbol": "y"
+                      },
+                      "expr": {
+                        "sequence": {
+                          "symbol": "+"
+                        },
+                        "expr": {
+                          "sequence": {
+                            "symbol": "z"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "rparen": ")"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "frac-sum-of-fracs",
+      "input": "a/b + c/d",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "frac": {
+            "numerator": {
+              "symbol": "a"
+            },
+            "denominator": {
+              "sequence": {
+                "symbol": "b"
+              }
+            }
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "+"
+            },
+            "expr": {
+              "frac": {
+                "numerator": {
+                  "symbol": "c"
+                },
+                "denominator": {
+                  "sequence": {
+                    "symbol": "d"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "frac-explicit",
+      "input": "frac(a)(b)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "power_base": {
+            "binary_class": "frac",
+            "base_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "a"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            },
+            "power_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "b"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "left-right-round",
+      "input": "left( x right)",
+      "decimal": ".",
+      "tree": {
+        "left_right": {
+          "left": "(",
+          "left_right_value": {
+            "sequence": {
+              "symbol": "x"
+            }
+          },
+          "right": ")"
+        }
+      }
+    },
+    {
+      "id": "left-right-square",
+      "input": "left[ x right]",
+      "decimal": ".",
+      "tree": {
+        "left_right": {
+          "left": "[",
+          "left_right_value": {
+            "sequence": {
+              "symbol": "x"
+            }
+          },
+          "right": "]"
+        }
+      }
+    },
+    {
+      "id": "left-right-around-frac",
+      "input": "left( a/b right)",
+      "decimal": ".",
+      "tree": {
+        "left_right": {
+          "left": "(",
+          "left_right_value": {
+            "frac": {
+              "numerator": {
+                "symbol": "a"
+              },
+              "denominator": {
+                "sequence": {
+                  "symbol": "b"
+                }
+              }
+            }
+          },
+          "right": ")"
+        }
+      }
+    },
+    {
+      "id": "matrix-column",
+      "input": "((a),(b))",
+      "decimal": ".",
+      "tree": {
+        "left_right": {
+          "table": {
+            "table_left": {
+              "table_left": "("
+            },
+            "table_row": {
+              "open_tr": "(",
+              "tds_list": {
+                "td": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "a"
+                    }
+                  }
+                }
+              }
+            },
+            "expr": {
+              "table_row": {
+                "open_tr": "(",
+                "tds_list": {
+                  "td": {
+                    "expr": {
+                      "sequence": {
+                        "symbol": "b"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "table_right": {
+              "table_right": ")"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "matrix-two-by-two",
+      "input": "[[a,b],[c,d]]",
+      "decimal": ".",
+      "tree": {
+        "left_right": {
+          "table": {
+            "table_left": {
+              "table_left": "["
+            },
+            "table_row": {
+              "open_tr": "[",
+              "tds_list": {
+                "td": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "a"
+                    },
+                    "expr": {
+                      "comma": ",",
+                      "expr": {
+                        "sequence": {
+                          "symbol": "b"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "expr": {
+              "table_row": {
+                "open_tr": "[",
+                "tds_list": {
+                  "td": {
+                    "expr": {
+                      "sequence": {
+                        "symbol": "c"
+                      },
+                      "expr": {
+                        "comma": ",",
+                        "expr": {
+                          "sequence": {
+                            "symbol": "d"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "table_right": {
+              "table_right": "]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "mixed-implicit-product",
+      "input": "2pi r",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "2"
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "pi"
+            },
+            "expr": {
+              "sequence": {
+                "symbol": "r"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "mixed-greek-sequence",
+      "input": "alpha beta gamma",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "alpha"
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "beta"
+            },
+            "expr": {
+              "sequence": {
+                "symbol": "gamma"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "mixed-function-definition",
+      "input": "f(x) = x^2",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "f"
+          },
+          "expr": {
+            "sequence": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            },
+            "expr": {
+              "sequence": {
+                "symbol": "="
+              },
+              "expr": {
+                "power_base": {
+                  "power_base": {
+                    "symbol": "x"
+                  },
+                  "power": {
+                    "power_value": {
+                      "number": "2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "mixed-binomial-square",
+      "input": "(x+y)^2 = x^2 + 2xy + y^2",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "power_base": {
+            "power_base": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "+"
+                      },
+                      "expr": {
+                        "sequence": {
+                          "symbol": "y"
+                        }
+                      }
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            },
+            "power": {
+              "power_value": {
+                "number": "2"
+              }
+            }
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "="
+            },
+            "expr": {
+              "power_base": {
+                "power_base": {
+                  "symbol": "x"
+                },
+                "power": {
+                  "power_value": {
+                    "number": "2"
+                  }
+                }
+              },
+              "expr": {
+                "sequence": {
+                  "symbol": "+"
+                },
+                "expr": {
+                  "sequence": {
+                    "number": "2"
+                  },
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "y"
+                      },
+                      "expr": {
+                        "sequence": {
+                          "symbol": "+"
+                        },
+                        "expr": {
+                          "power_base": {
+                            "power_base": {
+                              "symbol": "y"
+                            },
+                            "power": {
+                              "power_value": {
+                                "number": "2"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "mixed-sum-of-cubes",
+      "input": "sum_(i=1)^n i^3=((n(n+1))/2)^2",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "ternary": {
+            "ternary_class": "sum",
+            "base_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "i"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "="
+                      },
+                      "expr": {
+                        "sequence": {
+                          "number": "1"
+                        }
+                      }
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            },
+            "power_value": {
+              "symbol": "n"
+            },
+            "third_value": {
+              "power_base": {
+                "power_base": {
+                  "symbol": "i"
+                },
+                "power": {
+                  "power_value": {
+                    "number": "3"
+                  }
+                }
+              }
+            }
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "="
+            },
+            "expr": {
+              "power_base": {
+                "power_base": {
+                  "intermediate_exp": {
+                    "lparen": "(",
+                    "expr": {
+                      "expr": {
+                        "frac": {
+                          "numerator": {
+                            "intermediate_exp": {
+                              "lparen": "(",
+                              "expr": {
+                                "expr": {
+                                  "sequence": {
+                                    "symbol": "n"
+                                  },
+                                  "expr": {
+                                    "sequence": {
+                                      "intermediate_exp": {
+                                        "lparen": "(",
+                                        "expr": {
+                                          "expr": {
+                                            "sequence": {
+                                              "symbol": "n"
+                                            },
+                                            "expr": {
+                                              "sequence": {
+                                                "symbol": "+"
+                                              },
+                                              "expr": {
+                                                "sequence": {
+                                                  "number": "1"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "rparen": ")"
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "rparen": ")"
+                            }
+                          },
+                          "denominator": {
+                            "sequence": {
+                              "number": "2"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "rparen": ")"
+                  }
+                },
+                "power": {
+                  "power_value": {
+                    "number": "2"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "mod-simple",
+      "input": "a mod b",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "mod": {
+            "dividend": {
+              "symbol": "a"
+            },
+            "mod": "mod",
+            "divisor": {
+              "sequence": {
+                "symbol": "b"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "mod-numeric",
+      "input": "x mod 2",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "mod": {
+            "dividend": {
+              "symbol": "x"
+            },
+            "mod": "mod",
+            "divisor": {
+              "sequence": {
+                "number": "2"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "mod-in-expression",
+      "input": "(a + b) mod n",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "mod": {
+            "dividend": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "a"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "+"
+                      },
+                      "expr": {
+                        "sequence": {
+                          "symbol": "b"
+                        }
+                      }
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            },
+            "mod": "mod",
+            "divisor": {
+              "sequence": {
+                "symbol": "n"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "nary-log-base",
+      "input": "log_2 8",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "power_base": {
+            "binary_class": "log",
+            "base": {
+              "base_value": {
+                "number": "2"
+              }
+            }
+          },
+          "expr": {
+            "sequence": {
+              "number": "8"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "nary-lim",
+      "input": "lim_(x->oo) f(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "power_base": {
+            "binary_class": "lim",
+            "base": {
+              "base_value": {
+                "intermediate_exp": {
+                  "lparen": "(",
+                  "expr": {
+                    "expr": {
+                      "sequence": {
+                        "symbol": "x"
+                      },
+                      "expr": {
+                        "sequence": {
+                          "symbol": "->"
+                        },
+                        "expr": {
+                          "sequence": {
+                            "symbol": "oo"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "rparen": ")"
+                }
+              }
+            }
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "f"
+            },
+            "expr": {
+              "sequence": {
+                "intermediate_exp": {
+                  "lparen": "(",
+                  "expr": {
+                    "expr": {
+                      "sequence": {
+                        "symbol": "x"
+                      }
+                    }
+                  },
+                  "rparen": ")"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "nary-sum-bounded",
+      "input": "sum_(i=1)^n i",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "ternary": {
+            "ternary_class": "sum",
+            "base_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "i"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "="
+                      },
+                      "expr": {
+                        "sequence": {
+                          "number": "1"
+                        }
+                      }
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            },
+            "power_value": {
+              "symbol": "n"
+            },
+            "third_value": {
+              "sequence": {
+                "symbol": "i"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "nary-int-bounded",
+      "input": "int_0^1 x dx",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "ternary": {
+            "ternary_class": "int",
+            "base_value": {
+              "number": "0"
+            },
+            "power_value": {
+              "number": "1"
+            },
+            "third_value": {
+              "sequence": {
+                "symbol": "x"
+              }
+            }
+          },
+          "expr": {
+            "sequence": {
+              "intermediate_exp": {
+                "d": "d",
+                "x": "x"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "nary-prod-bounded",
+      "input": "prod_(k=1)^n k",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "ternary": {
+            "ternary_class": "prod",
+            "base_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "k"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "="
+                      },
+                      "expr": {
+                        "sequence": {
+                          "number": "1"
+                        }
+                      }
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            },
+            "power_value": {
+              "symbol": "n"
+            },
+            "third_value": {
+              "sequence": {
+                "symbol": "k"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "nary-sum-bare",
+      "input": "sum x",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "ternary_class": "sum",
+          "expr": {
+            "sequence": {
+              "symbol": "x"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-2-grouped",
+      "input": "1910",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "1910"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-2-fraction",
+      "input": "10.75",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "10.75"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-2-precision",
+      "input": "10.75",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "10.75"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-8",
+      "input": "255",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "255"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-16-default-prefix",
+      "input": "255",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "255"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-16-zero",
+      "input": "0",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "0"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-16-hex-capital",
+      "input": "48879",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "48879"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-16-hex-capital-numbers-only",
+      "input": "48879",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "48879"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-16-negative",
+      "input": "-255",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "-"
+          },
+          "expr": {
+            "sequence": {
+              "number": "255"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-16-significant-fraction",
+      "input": "123.25",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "123.25"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-16-digit-count",
+      "input": "0.1",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "0.1"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-16-padding-digits",
+      "input": "255",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "255"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-prefix-override",
+      "input": "255",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "255"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-prefix-empty",
+      "input": "255",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "255"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-prefix-space-negative",
+      "input": "-10.75",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "-"
+          },
+          "expr": {
+            "sequence": {
+              "number": "10.75"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-postfix-alone",
+      "input": "255",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "255"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-postfix-hex-capital",
+      "input": "48879",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "48879"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-prefix-and-postfix",
+      "input": "255",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "255"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-base-10-ignores-prefix-and-postfix",
+      "input": "255",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "255"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-locale-de-standard-defaults",
+      "input": "1234567.891",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "1234567.891"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-locale-fr-standard-defaults",
+      "input": "1234567.891",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "1234567.891"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-locale-unsupported-falls-back",
+      "input": "1234567.891",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "1234567.891"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-locale-de-explicit-separators",
+      "input": "1234567.891",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "1234567.891"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-string-format-alone",
+      "input": "14236.39239",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14236.39239"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-string-format-with-options",
+      "input": "14236.39239",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14236.39239"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-group-digits-and-decimal",
+      "input": "12345.6789",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "12345.6789"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-group-empty-disables-grouping",
+      "input": "12345.6789",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "12345.6789"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-e-custom-symbol-precision",
+      "input": "14000",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14000"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-scientific-exponent-plus",
+      "input": "14000",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14000"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-scientific-custom-times",
+      "input": "0.00012",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "0.00012"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-engineering-precision",
+      "input": "14000",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14000"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-engineering-default",
+      "input": "14236.39239",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14236.39239"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-e-zero",
+      "input": "0",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "0"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-scientific-zero",
+      "input": "0",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "0"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-engineering-zero",
+      "input": "0",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "0"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-e-digit-count-small",
+      "input": "0.000568096",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "0.000568096"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-e-significant-large",
+      "input": "1000000000000000000000.0",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "1000000000000000000000.0"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-e-significant-small",
+      "input": "0.001",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "0.001"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-scientific-significant-small",
+      "input": "0.001",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "0.001"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-engineering-significant",
+      "input": "112436",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "112436"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-scientific-precision-groups",
+      "input": "642121496772645156.4515",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "642121496772645156.4515"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-notation-scientific-digit-count",
+      "input": "327428.000878432992",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "327428.000878432992"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-precision-truncates-fraction",
+      "input": "14236.39239",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14236.39239"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-precision-pads-zeros",
+      "input": "3.5",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "3.5"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-precision-zero",
+      "input": "2.5",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "2.5"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-precision-with-separators",
+      "input": "1234.5678",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "1234.5678"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-precision-wide-fraction-groups",
+      "input": "14236.39239",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14236.39239"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-digit-count-pads-trailing-zeros",
+      "input": "283.180000000000",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "283.180000000000"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-digit-count-carries-into-new-digit",
+      "input": "999.9",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "999.9"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-digit-count-with-fraction-groups",
+      "input": "14236.39239",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14236.39239"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-sign-plus-basic",
+      "input": "14236.39239",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14236.39239"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-sign-plus-with-minus-operator",
+      "input": "-14236.39239",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "-"
+          },
+          "expr": {
+            "sequence": {
+              "number": "14236.39239"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-sign-plus-e",
+      "input": "14236.39239",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14236.39239"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-sign-plus-scientific",
+      "input": "14236.39239",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14236.39239"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-sign-plus-engineering",
+      "input": "14236.39239",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "14236.39239"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-padding-digits-grouped",
+      "input": "32",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "32"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-padding-custom-character",
+      "input": "32",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "32"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-padding-group-digits",
+      "input": "32123",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "32123"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-significant-rounds-integer",
+      "input": "112",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "112"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-significant-carry",
+      "input": "1999",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "1999"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-significant-below-one",
+      "input": "0.1999",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "0.1999"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-significant-groups-rounded-integer",
+      "input": "1234567",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "1234567"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-significant-fraction-groups",
+      "input": "327428.7432878432992",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "327428.7432878432992"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-significant-pads-small-value",
+      "input": "0.001",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "0.001"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-de-style-grouping",
+      "input": "123456.789",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "123456.789"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-formatter-fraction-side-grouping",
+      "input": "1.123456789",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "1.123456789"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-integer",
+      "input": "2",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "2"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-decimal",
+      "input": "2.5",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "2.5"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-zero",
+      "input": "0",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "0"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-multi-digit",
+      "input": "123",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "123"
+          }
+        }
+      }
+    },
+    {
+      "id": "number-decimal-long",
+      "input": "3.14159",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "3.14159"
+          }
+        }
+      }
+    },
+    {
+      "id": "operator-plus",
+      "input": "x + y",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "x"
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "+"
+            },
+            "expr": {
+              "sequence": {
+                "symbol": "y"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "operator-implicit-product",
+      "input": "2x",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "number": "2"
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "x"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "operator-asterisk",
+      "input": "a*b",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "a"
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "*"
+            },
+            "expr": {
+              "sequence": {
+                "symbol": "b"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "operator-minus",
+      "input": "a - b",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "a"
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "-"
+            },
+            "expr": {
+              "sequence": {
+                "symbol": "b"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "operator-equals",
+      "input": "x = y",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "x"
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "="
+            },
+            "expr": {
+              "sequence": {
+                "symbol": "y"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "operator-plus-chain",
+      "input": "a + b + c",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "a"
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "+"
+            },
+            "expr": {
+              "sequence": {
+                "symbol": "b"
+              },
+              "expr": {
+                "sequence": {
+                  "symbol": "+"
+                },
+                "expr": {
+                  "sequence": {
+                    "symbol": "c"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "partial-sqrt-unclosed",
+      "input": "sqrt(",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": "sqrt",
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": "",
+                "rparen": null
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "permissive-trailing-caret",
+      "input": "x^",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "x"
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "^"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "permissive-unclosed-paren",
+      "input": "(a",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "intermediate_exp": {
+              "lparen": "(",
+              "expr": {
+                "expr": {
+                  "sequence": {
+                    "symbol": "a"
+                  }
+                }
+              },
+              "rparen": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "permissive-unopened-paren",
+      "input": "a)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "a"
+          },
+          "expr": [
+            {
+              "rparen": ")"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "permissive-closing-run",
+      "input": "))))",
+      "decimal": ".",
+      "tree": {
+        "expr": [
+          {
+            "rparen": ")"
+          },
+          {
+            "rparen": ")"
+          },
+          {
+            "rparen": ")"
+          },
+          {
+            "rparen": ")"
+          }
+        ]
+      }
+    },
+    {
+      "id": "permissive-bare-dollar",
+      "input": "$",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "$"
+          }
+        }
+      }
+    },
+    {
+      "id": "permissive-frac-then-operator",
+      "input": "a/ + b",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "frac": {
+            "numerator": {
+              "symbol": "a"
+            },
+            "denominator": {
+              "sequence": {
+                "symbol": "+"
+              }
+            }
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "b"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "power-square",
+      "input": "x^2",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "power_base": {
+            "power_base": {
+              "symbol": "x"
+            },
+            "power": {
+              "power_value": {
+                "number": "2"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "power-fenced-exponent",
+      "input": "x^(n+1)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "power_base": {
+            "power_base": {
+              "symbol": "x"
+            },
+            "power": {
+              "power_value": {
+                "intermediate_exp": {
+                  "lparen": "(",
+                  "expr": {
+                    "expr": {
+                      "sequence": {
+                        "symbol": "n"
+                      },
+                      "expr": {
+                        "sequence": {
+                          "symbol": "+"
+                        },
+                        "expr": {
+                          "sequence": {
+                            "number": "1"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "rparen": ")"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "subscript-digit",
+      "input": "a_1",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "power_base": {
+            "power_base": {
+              "symbol": "a"
+            },
+            "base": {
+              "base_value": {
+                "number": "1"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "subscript-fenced",
+      "input": "a_(n+1)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "power_base": {
+            "power_base": {
+              "symbol": "a"
+            },
+            "base": {
+              "base_value": {
+                "intermediate_exp": {
+                  "lparen": "(",
+                  "expr": {
+                    "expr": {
+                      "sequence": {
+                        "symbol": "n"
+                      },
+                      "expr": {
+                        "sequence": {
+                          "symbol": "+"
+                        },
+                        "expr": {
+                          "sequence": {
+                            "number": "1"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "rparen": ")"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "power-and-subscript",
+      "input": "x_1^2",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "power_base": {
+            "power_base": {
+              "symbol": "x"
+            },
+            "base_value": {
+              "number": "1"
+            },
+            "power_value": {
+              "number": "2"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "power-exponential",
+      "input": "e^x",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "power_base": {
+            "power_base": {
+              "symbol": "e"
+            },
+            "power": {
+              "power_value": {
+                "symbol": "x"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "power-of-two",
+      "input": "2^10",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "power_base": {
+            "power_base": {
+              "number": "2"
+            },
+            "power": {
+              "power_value": {
+                "number": "10"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "power-over-number",
+      "input": "x^2/4",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "frac": {
+            "numerator": {
+              "power_base": {
+                "power_base": {
+                  "symbol": "x"
+                },
+                "power": {
+                  "power_value": {
+                    "number": "2"
+                  }
+                }
+              }
+            },
+            "denominator": {
+              "sequence": {
+                "number": "4"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "text-function",
+      "input": "text(hello)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "intermediate_exp": {
+              "text": "hello"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "text-quoted",
+      "input": "\"hello world\"",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "text": "hello world"
+          }
+        }
+      }
+    },
+    {
+      "id": "text-unitsml-valid",
+      "input": "\"unitsml(kg)\"",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unitsml": "kg"
+          }
+        }
+      }
+    },
+    {
+      "id": "root-sqrt-number",
+      "input": "sqrt(2)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": "sqrt",
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "number": "2"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "root-sqrt-expression",
+      "input": "sqrt(x+1)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": "sqrt",
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "+"
+                      },
+                      "expr": {
+                        "sequence": {
+                          "number": "1"
+                        }
+                      }
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "root-sqrt-pythagoras",
+      "input": "sqrt(a^2 + b^2)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": "sqrt",
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "power_base": {
+                      "power_base": {
+                        "symbol": "a"
+                      },
+                      "power": {
+                        "power_value": {
+                          "number": "2"
+                        }
+                      }
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "+"
+                      },
+                      "expr": {
+                        "power_base": {
+                          "power_base": {
+                            "symbol": "b"
+                          },
+                          "power": {
+                            "power_value": {
+                              "number": "2"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "root-cube",
+      "input": "root(3)(x+1)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "power_base": {
+            "binary_class": "root",
+            "base_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "number": "3"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            },
+            "power_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "+"
+                      },
+                      "expr": {
+                        "sequence": {
+                          "number": "1"
+                        }
+                      }
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "symbol-latin-x",
+      "input": "x",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "x"
+          }
+        }
+      }
+    },
+    {
+      "id": "symbol-greek-alpha",
+      "input": "alpha",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "alpha"
+          }
+        }
+      }
+    },
+    {
+      "id": "symbol-greek-pi",
+      "input": "pi",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "pi"
+          }
+        }
+      }
+    },
+    {
+      "id": "symbol-greek-sigma",
+      "input": "sigma",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "sigma"
+          }
+        }
+      }
+    },
+    {
+      "id": "symbol-infinity",
+      "input": "oo",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "oo"
+          }
+        }
+      }
+    },
+    {
+      "id": "symbol-adjacent-letters",
+      "input": "xyz",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "x"
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "y"
+            },
+            "expr": {
+              "sequence": {
+                "symbol": "z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "symbol-spaced-letters",
+      "input": "x y",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "x"
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "y"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "unary-sin-fenced",
+      "input": "sin(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": "sin",
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "unary-sin-bare",
+      "input": "sin x",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": "sin",
+              "symbol": "x"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "unary-cos-product",
+      "input": "cos(2x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": "cos",
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "number": "2"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "x"
+                      }
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "unary-abs",
+      "input": "abs(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": "abs",
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "unary-hat",
+      "input": "hat(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": "hat",
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "unary-bar",
+      "input": "bar(x)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": "bar",
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "unary-vec",
+      "input": "vec(v)",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": "vec",
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "v"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "unitsml-xml-microfarad",
+      "input": "\"unitsml(uF)\"",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unitsml": "uF"
+          }
+        }
+      }
+    },
+    {
+      "id": "unitsml-xml-microhenry",
+      "input": "\"unitsml(uH)\"",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unitsml": "uH"
+          }
+        }
+      }
+    },
+    {
+      "id": "whitespace-around-operator",
+      "input": "x  +  y",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "x"
+          },
+          "expr": {
+            "expr": {
+              "sequence": {
+                "symbol": "+"
+              },
+              "expr": {
+                "expr": {
+                  "sequence": {
+                    "symbol": "y"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "whitespace-between-letters",
+      "input": "a   b",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "symbol": "a"
+          },
+          "expr": {
+            "expr": {
+              "sequence": {
+                "symbol": "b"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "whitespace-in-subscript",
+      "input": "sum_(i = 1)^n  i",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "ternary": {
+            "ternary_class": "sum",
+            "base_value": {
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "i"
+                    },
+                    "expr": {
+                      "sequence": {
+                        "symbol": "="
+                      },
+                      "expr": {
+                        "sequence": {
+                          "number": "1"
+                        }
+                      }
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            },
+            "power_value": {
+              "symbol": "n"
+            },
+            "third_value": " "
+          },
+          "expr": {
+            "sequence": {
+              "symbol": "i"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "whitespace-surrounding",
+      "input": " x ",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "expr": {
+            "sequence": {
+              "symbol": "x"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "whitespace-inside-fence",
+      "input": "sqrt( x )",
+      "decimal": ".",
+      "tree": {
+        "expr": {
+          "sequence": {
+            "unary": {
+              "unary_class": "sqrt",
+              "intermediate_exp": {
+                "lparen": "(",
+                "expr": {
+                  "expr": {
+                    "sequence": {
+                      "symbol": "x"
+                    }
+                  }
+                },
+                "rparen": ")"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "id": "frac-trailing",
+      "reason": "no legacy parse tree"
+    },
+    {
+      "id": "frac-leading",
+      "reason": "no legacy parse tree"
+    },
+    {
+      "id": "frac-bare",
+      "reason": "no legacy parse tree"
+    },
+    {
+      "id": "frac-trailing-space",
+      "reason": "no legacy parse tree"
+    },
+    {
+      "id": "backtick-bare",
+      "reason": "no legacy parse tree"
+    },
+    {
+      "id": "right-without-left",
+      "reason": "no legacy parse tree"
+    },
+    {
+      "id": "right-unclosed",
+      "reason": "no legacy parse tree"
+    },
+    {
+      "id": "left-right-curly",
+      "reason": "no legacy parse tree"
+    },
+    {
+      "id": "left-right-vert",
+      "reason": "no legacy parse tree"
+    },
+    {
+      "id": "frac-trailing-after-brace",
+      "reason": "no legacy parse tree"
+    },
+    {
+      "id": "frac-trailing-after-braces",
+      "reason": "no legacy parse tree"
+    },
+    {
+      "id": "frac-trailing-after-parens",
+      "reason": "no legacy parse tree"
+    },
+    {
+      "id": "frac-trailing-after-both",
+      "reason": "no legacy parse tree"
+    }
+  ]
+}
