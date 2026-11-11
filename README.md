@@ -117,3 +117,12 @@ Native parser budget aborts remain distinct: raw compatibility calls raise
 `parsanol.NativeResourceError`; model JSON calls raise `ModelResourceError`
 with the native category and depth fields. Codec `model_error` refusals remain
 `ModelParseError`; they are not classified from message text.
+
+## Entrypoints and dialects
+
+- Raw trees: `parse_raw`, `parse_grammar` (native strict) and `parse_legacy_raw` (the stage
+  producer's legacy policy). These match Ruby `Amath.parse` / `Amath::Parser.raw`.
+- Typed model: `parse_model_json(source, decimal=".")` returns the portable model JSON as a
+  dict. This matches Ruby `Amath.parse_model(input, dialect: :legacy)`.
+- Dialect availability: only dialect L (`:legacy`) is implemented. The pma dialect
+  (`dialect: :pma` in Ruby amath) is not available in this package yet.
