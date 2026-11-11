@@ -28,6 +28,10 @@ Decimal markers `.`, `,` and `٫` select the shared artifact entry.
 `ParseError` extends `ParseFailed`: `.wire` preserves the native failure;
 `.byte_offset`/`.char_offset` locate the failure in caller input and
 `.grammar_byte_offset`/`.grammar_char_offset` locate it in `.grammar_input`.
+AsciiMath has no stage preprocessing, so both pairs are equal here. They are not
+the legacy Plurimath testsuite `error.index`, which counts characters in
+Plurimath's own preprocessed text (`{:` `:}` `(:` `:)` become U+2112 U+211B
+U+1455 U+1450): `{:a/` fails at byte 3 here and at character 2 there.
 `parse_grammar` reports direct grammar positions. Source relocation follows
 the stage SourceMap and fails closed when it cannot reproduce preprocessing. Invalid arguments raise `TypeError`/`ValueError`;
 missing native libraries raise `ParsanolError`.

@@ -7,6 +7,12 @@ class ParseError(ParseFailed):
 
     Native ``wire`` is preserved unchanged. Public offsets refer to caller
     input after source relocation; grammar offsets remain separately visible.
+    AsciiMath has no stage preprocessing, so for this package the caller and
+    grammar offsets are equal. Neither is the legacy Plurimath testsuite
+    ``error.index``, which counts characters in Plurimath's own preprocessed
+    text (it rewrites ``{:`` ``:}`` ``(:`` ``:)`` to U+2112 U+211B U+1455
+    U+1450): ``{:a/`` fails at byte 3 here and at character 2 there, both at
+    the same ``/``.
     """
     def __init__(self, failure, source, text, *, relocate=True):
         super().__init__(failure.wire)

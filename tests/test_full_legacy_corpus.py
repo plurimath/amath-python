@@ -76,3 +76,44 @@ class FullLegacyCorpusTests(unittest.TestCase):
                 self.assertEqual((row['id'],row['input']),(old['id'],old['input']))
                 result=stage.parse_legacy_raw(row['input'],decimal=row['decimal'])
                 self.assertEqual(ordered_values(result.tree),ordered_values(row['tree']))
+
+
+class ArchivedComparisonNegativeControls(unittest.TestCase):
+    """Always on (no corpus flag): the order-insensitive archived comparison must still reject
+    value, key and array-order tampering, and the strict current profile must keep member
+    order and its sealed digest. Mirrors amath-rs tests/raw_profile_contract.rs."""
+    fixtures=Path(__file__).parent/'fixtures'
+    @staticmethod
+    def ordered_values(value):
+        if isinstance(value,dict):
+            if set(value)=={'offset','length','line','column','value'}:return value['value']
+            return [[key,ArchivedComparisonNegativeControls.ordered_values(child)]for key,child in value.items()]
+        if isinstance(value,list):return [ArchivedComparisonNegativeControls.ordered_values(child)for child in value]
+        return value
+    def test_archived_values_and_current_member_order_are_distinct_contracts(self):
+        old=json.loads((self.fixtures/'full-legacy-values.json').read_text())['cases'][0]
+        now=json.loads((self.fixtures/'current-raw-a4ed231-v1.json').read_text())['cases'][0]
+        self.assertEqual((old['id'],old['input']),('colour-named',now['input']))
+        self.assertEqual(old['tree'],now['tree'])
+        self.assertNotEqual(self.ordered_values(old['tree']),self.ordered_values(now['tree']))
+        parsed=stage.parse_legacy_raw(old['input'])
+        def plain(v):
+            if isinstance(v,dict):
+                if set(v)=={'offset','length','line','column','value'}:return v['value']
+                return {k:plain(c)for k,c in v.items()}
+            if isinstance(v,list):return [plain(c)for c in v]
+            return v
+        self.assertEqual(plain(parsed.tree),old['tree'])
+        self.assertEqual(self.ordered_values(parsed.tree),self.ordered_values(now['tree']))
+    def test_tampered_values_keys_and_array_order_are_rejected(self):
+        value={'expr':['a','b']}
+        self.assertNotEqual(value,{'expr':['b','a']})
+        self.assertNotEqual(value,{'other':['a','b']})
+        self.assertNotEqual(value,{'expr':['a','c']})
+    def test_tampered_current_profile_fails_its_digest(self):
+        provenance=json.loads((self.fixtures/'raw-profiles-provenance-v1.json').read_text())
+        payload=(self.fixtures/'current-raw-a4ed231-v1.json').read_bytes()
+        self.assertEqual(hashlib.sha256(payload).hexdigest(),provenance['current_payload']['sha256'])
+        tampered=payload.replace(b'"colour-named"',b'"colour-namee"',1)
+        self.assertNotEqual(tampered,payload)
+        self.assertNotEqual(hashlib.sha256(tampered).hexdigest(),provenance['current_payload']['sha256'])
