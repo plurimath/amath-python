@@ -25,7 +25,7 @@ def decode(node,text):
 @unittest.skipUnless(os.environ.get('PLURIMATH_FULL_RAW_CORPUS')=='1','full corpus runs in native platform CI')
 class FullLegacyCorpusTests(unittest.TestCase):
     def test_complete_frozen_raw_corpus(self):
-        corpus=json.loads((Path(__file__).parent/'fixtures/full-raw.json').read_text())
+        corpus=json.loads((Path(__file__).parent/'fixtures/full-raw.json').read_text(encoding='utf-8'))
         for row in corpus['cases']:
             with self.subTest(id=row['id']):
                 source=row['input']['str'];decimal=row.get('options',{}).get('decimal','.')
@@ -45,7 +45,7 @@ class FullLegacyCorpusTests(unittest.TestCase):
                 return {key:without_slices(child)for key,child in value.items()}
             if isinstance(value,list):return [without_slices(child)for child in value]
             return value
-        corpus=json.loads((Path(__file__).parent/'fixtures/full-legacy-values.json').read_text())
+        corpus=json.loads((Path(__file__).parent/'fixtures/full-legacy-values.json').read_text(encoding='utf-8'))
         self.assertEqual(len(corpus['cases']),160);self.assertEqual(len(corpus['excluded']),13)
         # The frozen producer sorts Hash keys for stable files and treats parser
         # insertion order as an implementation detail (raw-profiles-provenance-v1.json,
@@ -59,10 +59,10 @@ class FullLegacyCorpusTests(unittest.TestCase):
 
     def test_complete_current_producer_member_order(self):
         fixtures=Path(__file__).parent/'fixtures'
-        provenance=json.loads((fixtures/'raw-profiles-provenance-v1.json').read_text())
+        provenance=json.loads((fixtures/'raw-profiles-provenance-v1.json').read_text(encoding='utf-8'))
         payload=(fixtures/'current-raw-a4ed231-v1.json').read_bytes()
         self.assertEqual(hashlib.sha256(payload).hexdigest(),provenance['current_payload']['sha256'])
-        current=json.loads(payload);archived=json.loads((fixtures/'full-legacy-values.json').read_text())
+        current=json.loads(payload);archived=json.loads((fixtures/'full-legacy-values.json').read_text(encoding='utf-8'))
         self.assertEqual(len(current['cases']),160);self.assertEqual(current['excluded'],archived['excluded'])
         self.assertTrue(current['producer']['engine_agreement'])
         def ordered_values(value):
@@ -91,8 +91,8 @@ class ArchivedComparisonNegativeControls(unittest.TestCase):
         if isinstance(value,list):return [ArchivedComparisonNegativeControls.ordered_values(child)for child in value]
         return value
     def test_archived_values_and_current_member_order_are_distinct_contracts(self):
-        old=json.loads((self.fixtures/'full-legacy-values.json').read_text())['cases'][0]
-        now=json.loads((self.fixtures/'current-raw-a4ed231-v1.json').read_text())['cases'][0]
+        old=json.loads((self.fixtures/'full-legacy-values.json').read_text(encoding='utf-8'))['cases'][0]
+        now=json.loads((self.fixtures/'current-raw-a4ed231-v1.json').read_text(encoding='utf-8'))['cases'][0]
         self.assertEqual((old['id'],old['input']),('colour-named',now['input']))
         self.assertEqual(old['tree'],now['tree'])
         self.assertNotEqual(self.ordered_values(old['tree']),self.ordered_values(now['tree']))
@@ -111,7 +111,7 @@ class ArchivedComparisonNegativeControls(unittest.TestCase):
         self.assertNotEqual(value,{'other':['a','b']})
         self.assertNotEqual(value,{'expr':['a','c']})
     def test_tampered_current_profile_fails_its_digest(self):
-        provenance=json.loads((self.fixtures/'raw-profiles-provenance-v1.json').read_text())
+        provenance=json.loads((self.fixtures/'raw-profiles-provenance-v1.json').read_text(encoding='utf-8'))
         payload=(self.fixtures/'current-raw-a4ed231-v1.json').read_bytes()
         self.assertEqual(hashlib.sha256(payload).hexdigest(),provenance['current_payload']['sha256'])
         tampered=payload.replace(b'"colour-named"',b'"colour-namee"',1)
