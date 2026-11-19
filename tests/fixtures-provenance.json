@@ -1,13 +1,13 @@
 {
   "raw": {
     "source_repository": "https://github.com/plurimath/amath",
-    "source_commit": "fbc20c95bdd04ef7952dc07ccf6d197b8f16bc84",
+    "source_commit": "68cc0a4c43ee77b6df758b5737b9f1c7c840ad74",
     "source_files": {
-      "artifacts/asciimath.json": "f7e812476e125729e4f69c00d08083d69e83b4666d3c33b911e3ab88d30988da",
-      "artifacts/asciimath.bindings.python.json": "2bf9e6723f1c1d66aa8853fd8095e1c908f60f17b034347fe12d858e3b0bf129",
-      "grammars/asciimath.parg": "8fc391577745dec67f31913a54de1060c6856f5514ed3c11300724a462ae8cfb",
+      "artifacts/asciimath.json": "dcb76184896f81760293483f7d2e7096ac9a6d7243de67c6f33aeb8efdee296e",
+      "artifacts/asciimath.bindings.python.json": "b8e27ff352dc3b70ab1a25ef4cd5d303f07b378f2c8687568e1c3251bdd64308",
+      "grammars/asciimath.parg": "08cea18f49353c14f349ea67c91d748dd449538549654ab1be060f33269769ed",
       "grammars/asciimath.wrappers.json": "ef2919bef0d3581eb5bfe93dfc268cf85961fb69794b6730f792b14c0a0b6618",
-      "lib/amath/raw_tree.rb": "9704233cb6385a33006ad543b80bfd02c3f4d55bb20396fc9a67d45996e8c245",
+      "lib/amath/raw_tree.rb": "8ad471a5edaf050dfbbe4bbecc00d69ec217eb98b79ed17b9c09297436b60853",
       "lib/amath/renester.rb": "d5b17ebeafb79b1ccfe9477d519c3e91d0bfc9b5e8c76f12a6828f87ee68492d",
       "lib/amath/error_position.rb": "8e66fca542b7a89537042981036ee3b5f4cf31345df99e46cb61cc0f739dbf42"
     },

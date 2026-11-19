@@ -25,8 +25,13 @@ Boundaries:
 * Legacy-oracle payloads (MathML and other target renderings of the old
   facade) are counted and not executed: this package has no such output.
 
-Nothing is skipped: every row of an executed boundary runs, and the set of
-executed IDs must equal the one recorded in ci/testsuite-replay.json.
+Supersession is append-only, as in amath's testsuite_parity_spec and the
+amath-rs replay: a row whose ID has an ``-r2`` sibling (the ID with its
+first ``-r2`` removed) is kept in the generation for history, and only the
+sibling runs. Generation 5 re-homes the bareword uncertainty calls to the
+quoted string channel (amath#17) this way. Every other row of an executed
+boundary runs. The executed and superseded IDs must equal the ones recorded
+in ci/testsuite-replay.json.
 """
 from __future__ import annotations
 import argparse
@@ -326,9 +331,21 @@ def _jobs() -> int:
     return max(1, int(value) if value else (os.cpu_count() or 1))
 
 
+def superseded_ids(documents) -> set:
+    """IDs that an ``-r2`` sibling supersedes; every one must exist."""
+    ids = {case["id"] for _, document in documents for case in document.get("cases", [])}
+    superseded = {identifier.replace("-r2", "", 1) for identifier in ids if "-r2" in identifier}
+    missing = sorted(superseded - ids)
+    if missing:
+        raise ReplayError(f"-r2 rows without an original to supersede: {missing[:5]}")
+    return superseded
+
+
 def replay(verified: dict) -> dict:
     _stage()
     executed = {boundary: [] for boundary in EXECUTED}
+    superseded = superseded_ids(verified["documents"])
+    skipped = []
     counted, tasks, origins = {}, [], []
     for path, document in verified["documents"]:
         boundary = document.get("boundary")
@@ -337,6 +354,9 @@ def replay(verified: dict) -> dict:
             counted[key] = counted.get(key, 0) + len(document["cases"])
             continue
         for case in document["cases"]:
+            if case["id"] in superseded:
+                skipped.append(case["id"])
+                continue
             tasks.append((boundary, case))
             origins.append((path, boundary, case["id"]))
     jobs = min(_jobs(), max(1, len(tasks)))
@@ -356,6 +376,7 @@ def replay(verified: dict) -> dict:
         "executed": {boundary: {"rows": len(ids), "ids_sha256": sha256("".join(i + "\n" for i in sorted(ids)).encode("utf-8"))}
                      for boundary, ids in executed.items()},
         "not_executed": counted,
+        "superseded": sorted(skipped),
         "failures": failures,
         "jobs": jobs,
     }
@@ -375,7 +396,8 @@ def run(pin_path=PIN, expectation_path=EXPECTATION, workdir=None, evidence=None)
         Path(evidence).with_name("executed-ids.txt").write_text(
             "".join(i + "\n" for i in report["executed_ids"]), encoding="utf-8")
         Path(evidence).write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    summary = {"jobs": report["jobs"], "executed": report["executed"], "not_executed": report["not_executed"], "failures": len(report["failures"])}
+    summary = {"jobs": report["jobs"], "executed": report["executed"], "not_executed": report["not_executed"],
+               "superseded": len(report["superseded"]), "failures": len(report["failures"])}
     print(json.dumps(summary, indent=2))
     for failure in report["failures"][:40]:
         print(f"FAIL {failure['id']} [{failure['boundary']}] {failure['problem']}")
@@ -383,6 +405,8 @@ def run(pin_path=PIN, expectation_path=EXPECTATION, workdir=None, evidence=None)
         raise ReplayError(f"{len(report['failures'])} pinned rows disagree with the installed wheel")
     if report["executed"] != expectation["executed"]:
         raise ReplayError("executed rows or IDs differ from ci/testsuite-replay.json")
+    if report["superseded"] != expectation["superseded"]:
+        raise ReplayError("superseded rows differ from ci/testsuite-replay.json")
     return report
 
 

@@ -217,3 +217,13 @@ class ModelComparatorTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+    def test_r2_rows_supersede_their_originals(self):
+        documents = [("a.yaml", {"cases": [{"id": "u.std"}, {"id": "u.std-r2"}, {"id": "u.std.model"},
+                                           {"id": "u.std-r2.model"}, {"id": "other"}]})]
+        self.assertEqual(replay.superseded_ids(documents), {"u.std", "u.std.model"})
+
+    def test_r2_row_without_original_is_refused(self):
+        documents = [("a.yaml", {"cases": [{"id": "u.std-r2"}]})]
+        with self.assertRaisesRegex(replay.ReplayError, "without an original"):
+            replay.superseded_ids(documents)

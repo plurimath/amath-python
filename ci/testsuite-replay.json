@@ -2,9 +2,37 @@
   "commit": "674126a07fa1cf89c24bc50fadb305299e1d1b18",
   "generation": 5,
   "snapshot_digest": "sha256:d3ee5a267373c235e555f2c0d01ae72e730ea2648113adcf7b0c87238b0ff63b",
-  "note": "Rows this consumer executes from the pinned generation: the 20 raw-tree and 20 typed-model amath uncertainty rows. ids_sha256 is the SHA-256 of the sorted IDs, one per line. Legacy-oracle payloads (the other 174 rows) are counted, not executed.",
+  "note": "Rows this consumer executes from the pinned generation: the 10 raw-tree and 10 typed-model amath uncertainty -r2 rows. The 20 bareword originals they supersede (amath#17 re-homed uncertainty to the quoted channel) are listed under superseded and not run. ids_sha256 is the SHA-256 of the sorted IDs, one per line. Legacy-oracle payloads (the other 174 rows) are counted, not executed.",
   "executed": {
-    "raw-tree": {"rows": 20, "ids_sha256": "c567bcba103d45b8bc3e537f463fc0d33fe0460bb6d9826f315b08608ecaf415"},
-    "typed-model": {"rows": 20, "ids_sha256": "363dc170e36aab9137db1bb06300d7fff61cddc5d68379f31b4d36e5ad1826bb"}
-  }
+    "raw-tree": {
+      "rows": 10,
+      "ids_sha256": "1a27d4f01fe90e1040cdf715d47931b324eb4615d5ad6d4dc848aad8faeb6871"
+    },
+    "typed-model": {
+      "rows": 10,
+      "ids_sha256": "7dbda58158096e9c8d4882c1672cad62a5e925db0c300bd6d8690ca36370a1cc"
+    }
+  },
+  "superseded": [
+    "uncertainty-shared-exponent.concise.negative_exponent",
+    "uncertainty-shared-exponent.concise.negative_exponent.model",
+    "uncertainty-shared-exponent.concise.unit",
+    "uncertainty-shared-exponent.concise.unit.model",
+    "uncertainty-shared-exponent.concise.zero_exponent",
+    "uncertainty-shared-exponent.concise.zero_exponent.model",
+    "uncertainty-shared-exponent.expanded.dimensionless_fields",
+    "uncertainty-shared-exponent.expanded.dimensionless_fields.model",
+    "uncertainty-shared-exponent.expanded.negative_exponent",
+    "uncertainty-shared-exponent.expanded.negative_exponent.model",
+    "uncertainty-shared-exponent.interval.shared_exponent",
+    "uncertainty-shared-exponent.interval.shared_exponent.model",
+    "uncertainty-shared-exponent.standard.leading_zeroes",
+    "uncertainty-shared-exponent.standard.leading_zeroes.model",
+    "uncertainty-shared-exponent.standard.negative",
+    "uncertainty-shared-exponent.standard.negative.model",
+    "uncertainty-shared-exponent.standard.positive",
+    "uncertainty-shared-exponent.standard.positive.model",
+    "uncertainty-shared-exponent.standard.zero_exponent",
+    "uncertainty-shared-exponent.standard.zero_exponent.model"
+  ]
 }
