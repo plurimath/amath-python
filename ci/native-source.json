@@ -4,8 +4,9 @@
   "revision": "a2a4ecdf5627f8e5e70ac0d191a8a8009c41bd91",
   "rust_toolchain": "1.95.0",
   "python_runtime": {
+    "requirement": "parsanol==1.5.9.0",
     "repository": "parsanol/parsanol-python",
-    "revision": "7bb1e554ec29dcd82ee7a2c467bc46309170ceeb",
+    "revision": "81281dd3cc3a25525ff4dcf62d82c41de7af7b1e",
     "public_source_available": true
   },
   "cargo_lock_sha256": "e3195cf4d7c06acb71aabb7a8e231dfb4eefe065967bc4dcd66ecdd5bbf53987",
