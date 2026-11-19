@@ -1,13 +1,13 @@
 {
   "stage": "amath",
   "repository": "plurimath/amath-rs",
-  "revision": "7a26965528cda91030d164ec27f10b6c89e14f6b",
+  "revision": "a2a4ecdf5627f8e5e70ac0d191a8a8009c41bd91",
   "rust_toolchain": "1.95.0",
   "python_runtime": {
     "repository": "parsanol/parsanol-python",
     "revision": "7bb1e554ec29dcd82ee7a2c467bc46309170ceeb",
     "public_source_available": true
   },
-  "cargo_lock_sha256": "1a669e58eccedfd302821c85a9e33c37c2a5bfb0bf55d6f77c822efaa5c50c6e",
-  "parsanol_sdk_revision": "5206a33b5417b4ecd3a601930461ed2967c871e7"
+  "cargo_lock_sha256": "e3195cf4d7c06acb71aabb7a8e231dfb4eefe065967bc4dcd66ecdd5bbf53987",
+  "parsanol_sdk_revision": "8f8afd878a3e91b83e43c2005459bc9dc4927851"
 }
